@@ -1,0 +1,2904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AI Use in Civil Engineering Studies — Alternative layout</title>
+  <meta name="description" content="METU study on AI use in civil engineering studies (alternative combined layout)" />
+  <meta name="theme-color" content="#ca0000" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22471%22%0Aheight%3D%22398%22%20stroke%3D%22%23C00%22%20stroke-width%3D%224%22%3E%0A%3Cpath%20fill%3D%22%23C00%22%0Ad%3D%22m200%2C8a186%2C186%200%201%2C0%202%2C0zm36%2C368a186%2C186%200%200%2C1%200-364%22%2F%3E%0A%3Cpath%20fill%3D%22none%22%20d%3D%22m272%2C8a186%2C186%200%201%2C0%202%2C0z%22%2F%3E%0A%3C%2Fsvg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  
+  --paper:        #ece4d4;   
+  --paper-2:      #e3dac7;   
+  --surface:      #fbf7ee;   
+  --surface-2:    #f3ecdd;   
+  --ink:          #221f1a;   
+  --ink-soft:     #5b5448;
+  --ink-faint:    #8c8475;
+  --line:         #d8cdb7;   
+  --line-strong:  #c2b599;
+
+  
+  --accent:       #ca0000;
+  --accent-2:     #e22525;
+  --accent-press: #a30000;
+  --accent-soft:  rgba(202,0,0,.10);
+  --accent-softer:rgba(202,0,0,.05);
+  --ink-blue:     #1d4060;   
+
+  
+  --terra:        #b9512f;   
+  --ochre:        #c08a3e;   
+  --moss:         #4d6b3c;   
+  --moss-soft:    rgba(77,107,60,.14);
+
+  
+  --metu:         #ca0000;
+  --metu-2:       #e23232;
+  --metu-soft:    rgba(202,0,0,.30);
+
+  
+  --ok:           var(--moss);
+  --ok-soft:      var(--moss-soft);
+  --danger:       #b03a2e;
+  --danger-soft:  rgba(176,58,46,.09);
+  --warn:         #c08a3e;
+
+  
+  --v1: #a8432c;  
+  --v2: #c17a45;  
+  --v3c: #8a7f63; 
+  --v4: #56768f;  
+  --v5: #214a6c;  
+
+  --shadow-sm: 0 1px 2px rgba(40,30,15,.05), 0 10px 28px rgba(40,30,15,.07);
+  --shadow-md: 0 22px 56px rgba(30,22,10,.22);
+  --radius: 16px;
+  --radius-sm: 11px;
+  --topbar-h: 56px;
+  --maxw: 940px;
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--paper);
+  
+  background-image:
+    radial-gradient(1100px 620px at 84% -8%, rgba(29,64,96,.06), transparent 62%),
+    radial-gradient(900px 520px at 6% 102%, rgba(185,81,47,.05), transparent 60%),
+    linear-gradient(rgba(29,64,96,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29,64,96,.035) 1px, transparent 1px);
+  background-size: auto, auto, 30px 30px, 30px 30px;
+  
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+  min-height: 100vh;
+}
+svg { display: block; }
+::selection { background: rgba(185,81,47,.22); }
+
+.topbar { position: sticky; top: 0; z-index: 80; background: var(--surface); border-bottom: 1px solid var(--line-strong); box-shadow: 0 1px 0 rgba(255,255,255,.5) inset; }
+.topbar-inner { max-width: var(--maxw); margin: 0 auto; min-height: var(--topbar-h); padding: 8px clamp(14px,4vw,26px); display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 600; font-optical-sizing: auto; letter-spacing: -.01em; color: var(--ink); text-decoration: none; font-size: 16px; flex: none; }
+.brand-logo { height: 26px; width: auto; flex: none; display: block; }
+.progress { display: flex; align-items: center; gap: 12px; flex: 1; max-width: 440px; min-width: 0; }
+.progress-track { flex: 1; height: 6px; border-radius: 999px; background: var(--paper-2); overflow: hidden; box-shadow: inset 0 1px 2px rgba(40,30,15,.12); }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--metu), var(--metu-2)); border-radius: 999px; transition: width .5s cubic-bezier(.4,0,.2,1); }
+.progress-text { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--metu); white-space: nowrap; font-variant-numeric: tabular-nums; min-width: 54px; text-align: right; }
+
+.stepper { position: relative; z-index: 60; background: var(--surface-2); border-bottom: 1px solid var(--line); }
+.stepper[hidden] { display: none; }
+.stepper-inner { max-width: var(--maxw); margin: 0 auto; padding: 9px clamp(14px,4vw,26px); display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.stepper-inner::-webkit-scrollbar { display: none; }
+.step { display: flex; align-items: center; gap: 8px; flex: none; }
+.step-btn { display: flex; align-items: center; gap: 9px; cursor: pointer; background: transparent; border: 0; font: inherit; color: var(--ink-faint); padding: 4px 7px; border-radius: 9px; white-space: nowrap; transition: color .15s ease; }
+.step-dot { width: 26px; height: 26px; border-radius: 8px; flex: none; display: grid; place-items: center; font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; background: var(--paper); color: var(--ink-soft); border: 1.5px solid var(--line-strong); transition: all .18s ease; }
+.step-label { font-size: 13px; font-weight: 500; }
+.step.active .step-btn { color: var(--ink); }
+.step.active .step-dot { background: var(--metu); color: #fff; border-color: var(--metu); box-shadow: 0 4px 12px var(--metu-soft); }
+.step.done .step-dot { background: var(--moss); color: var(--surface); border-color: var(--moss); }
+.step.locked .step-btn { cursor: not-allowed; color: var(--ink-faint); opacity: .6; }
+.step.locked .step-dot { background: transparent; border-style: dashed; border-color: var(--line-strong); color: var(--ink-faint); }
+.step.locked .step-dot svg { width: 13px; height: 13px; }
+.step-line { width: 20px; height: 2px; background: var(--line-strong); border-radius: 2px; flex: none; opacity: .7; }
+.step:last-child .step-line { display: none; }
+
+.view { max-width: var(--maxw); margin: 0 auto; padding: clamp(22px,4vw,44px) clamp(14px,4vw,26px) 56px; outline: none; }
+.page { animation: pagein .34s cubic-bezier(.2,.7,.2,1); }
+@keyframes pagein { from { opacity: 0; transform: translateY(10px); } }
+
+.hero-logo { height: 64px; width: auto; display: block; margin: 0 0 22px; }
+.eyebrow { margin: 0 0 12px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--terra); }
+.welcome h1 { font-family: var(--font-display); font-optical-sizing: auto; font-size: clamp(34px,6vw,58px); line-height: 1.02; letter-spacing: -.02em; margin: 0 0 18px; font-weight: 600; }
+.welcome-sub { font-size: clamp(15px,1.9vw,18px); color: var(--ink-soft); max-width: 680px; margin: 0 0 18px; }
+.welcome-sub.small { font-size: 14.5px; }
+.hero-card { background:
+    linear-gradient(180deg, var(--surface), var(--surface-2));
+  border: 1px solid var(--line-strong); border-radius: 20px; box-shadow: var(--shadow-sm); padding: clamp(26px,4.5vw,48px); position: relative; overflow: hidden; }
+.hero-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--accent), var(--terra) 60%, var(--ochre)); }
+.hero-card::after { content: ""; position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; background: repeating-linear-gradient(45deg, transparent 0 10px, rgba(29,64,96,.05) 10px 11px); border-radius: 50%; pointer-events: none; }
+.hero-card > * { position: relative; }
+.consent { margin: 20px 0 0; font-size: 13.5px; color: var(--ink-soft); background: var(--accent-softer); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 13px 15px; max-width: 680px; }
+
+.privacy { margin: 22px 0 0; max-width: 680px; display: grid; gap: 11px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.privacy-head { grid-column: 1 / -1; margin: 0 0 1px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--moss); }
+.privacy-row { display: flex; align-items: flex-start; gap: 13px; font-size: 14px; line-height: 1.5; color: var(--ink); }
+.privacy-ic { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: var(--moss); background: var(--moss-soft); }
+.privacy-ic svg { width: 19px; height: 19px; }
+.privacy-tx { padding-top: 7px; }
+.welcome-actions { margin-top: 26px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.save-hint { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: clamp(18px,3vw,26px); }
+
+.gp-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 18px; }
+.gp-icon { flex: none; width: 50px; height: 50px; border-radius: 13px; display: grid; place-items: center; color: var(--accent); background: var(--surface); border: 1px solid var(--line-strong); box-shadow: var(--shadow-sm); }
+.gp-icon svg { width: 26px; height: 26px; }
+.gp-icon.info { color: var(--ink-soft); }
+.gp-head h2 { font-family: var(--font-display); font-optical-sizing: auto; margin: 4px 0 6px; font-size: clamp(24px,3.6vw,34px); letter-spacing: -.018em; font-weight: 600; line-height: 1.08; }
+.gp-desc { margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 680px; }
+
+.scalebar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 12px 18px; margin: 0 0 18px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+.scalebar-title { font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin-right: 2px; }
+.sb { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-soft); }
+.sb-num { width: 22px; height: 22px; border-radius: 6px; flex: none; display: grid; place-items: center; font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: #fff; }
+.sb[data-n="1"] .sb-num { background: var(--v1); }
+.sb[data-n="2"] .sb-num { background: var(--v2); }
+.sb[data-n="3"] .sb-num { background: var(--v3c); }
+.sb[data-n="4"] .sb-num { background: var(--v4); }
+.sb[data-n="5"] .sb-num { background: var(--v5); }
+
+.setup { margin-bottom: 24px; }
+.usagepicker { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 20px 20px 8px; }
+.usagepicker.needs { animation: shake .32s ease; border-color: var(--danger); }
+.usagepicker-q { font-family: var(--font-display); font-optical-sizing: auto; font-weight: 600; font-size: 18px; letter-spacing: -.01em; margin: 0; }
+.usagepicker-hint { display: block; font-family: var(--font-body); font-weight: 400; font-size: 13.5px; color: var(--ink-soft); margin-top: 5px; }
+.usage-list { display: flex; flex-direction: column; margin-top: 10px; }
+.usage-item { border-top: 1px solid var(--line); }
+.usage-item:first-child { border-top: 0; }
+.usage-toggle { display: flex; align-items: flex-start; gap: 13px; width: 100%; text-align: left; border: 0; background: none; font: inherit; color: var(--ink); cursor: pointer; padding: 15px 6px; border-radius: 10px; transition: background .12s ease; }
+.usage-check { flex: none; display: grid; place-items: center; width: 23px; height: 23px; margin-top: 1px; border: 1.6px solid var(--line-strong); border-radius: 7px; background: var(--paper); color: #fff; transition: background .15s ease, border-color .15s ease, transform .12s ease; }
+.usage-check svg { width: 15px; height: 15px; }
+.usage-item.on > .usage-toggle .usage-check { background: var(--accent); border-color: var(--accent); }
+.usage-item.done > .usage-toggle .usage-check { background: var(--moss); border-color: var(--moss); }
+.usage-item.none.on > .usage-toggle .usage-check { background: var(--ink-soft); border-color: var(--ink-soft); }
+.usage-body { flex: 1; min-width: 0; }
+.usage-namerow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.usage-name { font-weight: 600; font-size: 15px; letter-spacing: -.005em; }
+.usage-badge { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .02em; color: var(--moss); background: var(--moss-soft); padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+.usage-badge svg { width: 12px; height: 12px; }
+.usage-ex { display: block; margin-top: 7px; font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+
+.ex-block { margin-top: 6px; }
+.ex-block .ex-lead { display: block; font-weight: 600; color: var(--ink); font-size: 13px; margin-bottom: 7px; }
+.ex-list { margin: 0; padding-left: 19px; display: flex; flex-direction: column; gap: 6px; }
+.ex-list li { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); }
+.ex-list li::marker { color: var(--accent); }
+.info-pop .ex-block { margin: 0 0 20px; }
+
+.usage-ex-det { margin: -4px 0 12px 36px; }
+.usage-ex-sum { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; list-style: none; font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: .02em; color: var(--accent); padding: 3px 0; }
+.usage-ex-sum::-webkit-details-marker { display: none; }
+.usage-ex-sum::before { content: "▸"; font-size: 10px; transition: transform .15s ease; }
+.usage-ex-det[open] .usage-ex-sum::before { transform: rotate(90deg); }
+.usage-ex-det .usage-ex { margin-top: 4px; }
+.usage-item.none .usage-name { color: var(--ink-soft); font-weight: 500; }
+
+.toolsblock { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 20px; }
+.toolsblock-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.toolsblock-q { font-family: var(--font-display); font-optical-sizing: auto; font-weight: 600; font-size: 18px; letter-spacing: -.01em; margin: 0; }
+.segmented.toolsmode .seg-opt { padding: 8px 16px; font-size: 13.5px; }
+.toolsblock > .tools { margin-top: 14px; padding-top: 0; border-top: 0; }
+.toolgroup { margin-top: 6px; }
+.toolgroup + .toolgroup { border-top: 1px solid var(--line); }
+.toolgroup-name { font-weight: 600; font-size: 14.5px; letter-spacing: -.005em; margin: 18px 0 0; }
+.toolgroup > .tools { margin-top: 10px; padding-top: 0; border-top: 0; }
+
+.segmented { display: inline-flex; background: var(--paper-2); border-radius: 11px; padding: 3px; gap: 3px; border: 1px solid var(--line); }
+.seg-opt { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 0; background: none; font: inherit; font-weight: 500; font-size: 14.5px; color: var(--ink-soft); padding: 9px 20px; border-radius: 8px; cursor: pointer; transition: background .15s ease, color .15s ease, box-shadow .15s ease; }
+.seg-opt svg { width: 16px; height: 16px; }
+.seg-opt.on { background: var(--surface); color: var(--accent); box-shadow: var(--shadow-sm); }
+.yesno.needs { animation: shake .32s ease; }
+@keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+.tools { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.tools-instruction { margin: 0 0 12px; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+.toolchips { display: flex; flex-wrap: wrap; gap: 9px; }
+.toolchips.needs { animation: shake .32s ease; }
+.chip { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line-strong); background: var(--surface); border-radius: 999px; padding: 9px 15px; font: inherit; font-weight: 500; font-size: 14px; color: var(--ink); cursor: pointer; transition: border-color .15s ease, background .15s ease, color .15s ease, transform .12s ease; }
+.chip.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.chip .rank { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 999px; background: var(--accent); color: #fff; font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+.chip.other { border-style: dashed; color: var(--ink-soft); }
+.tools-hint { margin: 12px 0 0; font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); }
+
+.matrix-lead { margin: 4px 0 12px; font-size: 14.5px; font-weight: 500; color: var(--ink-soft); }
+.matrix-wrap { position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); box-shadow: var(--shadow-sm); background: var(--surface); overflow: hidden; scroll-margin-top: calc(var(--topbar-h) + 60px); }
+
+.matrix-scroll { overflow: auto; max-height: calc(100vh - 320px); max-height: calc(100svh - 320px); overscroll-behavior: contain; scroll-padding-left: 304px;
+  
+  scrollbar-width: none; -ms-overflow-style: none; }
+.matrix-scroll::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+@media (hover: hover) and (pointer: fine) {
+  .matrix-scroll { scrollbar-width: auto; scrollbar-color: var(--accent) var(--surface-2); }
+  .matrix-scroll::-webkit-scrollbar { width: 14px; height: 16px; display: block; }
+  .matrix-scroll::-webkit-scrollbar-track { background: var(--surface-2); border-top: 1px solid var(--line); }
+  .matrix-scroll::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; border: 3px solid var(--surface-2); min-width: 48px; min-height: 40px; }
+  .matrix-scroll::-webkit-scrollbar-thumb:hover { background: var(--accent-press); }
+}
+table.matrix { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; }
+.matrix th, .matrix td { border-bottom: 1px solid var(--line); }
+.matrix thead th.corner { position: -webkit-sticky; position: sticky; left: 0; top: 0; z-index: 40; width: 304px; min-width: 304px; max-width: 304px; background: var(--surface-2); text-align: left; padding: 13px 16px; font-family: var(--font-mono); font-size: 10.5px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); border-right: 1px solid var(--line-strong); border-bottom: 2px solid var(--line-strong); }
+.matrix thead th.colhead { position: -webkit-sticky; position: sticky; top: 0; z-index: 30; background: var(--surface-2); color: var(--ink); font-size: 13px; font-weight: 600; line-height: 1.3; padding: 13px 12px; text-align: center; vertical-align: middle; border-right: 1px solid var(--line); border-bottom: 2px solid var(--line-strong); width: 134px; min-width: 134px; }
+
+.matrix tbody th.qcell { position: -webkit-sticky; position: sticky; left: 0; z-index: 20; width: 304px; min-width: 304px; max-width: 304px; background: #f3eee2; text-align: left; padding: 15px 16px 15px 18px; font-weight: 400; font-size: 14px; line-height: 1.45; vertical-align: middle; border-right: 1px solid var(--line-strong); border-left: 4px solid #cdbf9f; }
+
+.matrix tbody tr.qrow.cgstart th.qcell, .matrix tbody tr.qrow.cgstart td.answer { border-top: 2px solid var(--line-strong); }
+
+.qgroup { display: block; margin: 0 0 9px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.qgroup-title { display: block; font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); }
+.qgroup-help { display: block; margin-top: 4px; font-family: var(--font-body); font-size: 12px; line-height: 1.45; color: var(--ink-soft); }
+.qtext { display: block; }
+.matrix td.answer { background: var(--surface); padding: 7px 8px; text-align: center; vertical-align: middle; border-right: 1px solid var(--line); width: 134px; min-width: 134px; scroll-snap-align: start; }
+
+.matrix thead th.colhead:not(.locked) { box-shadow: inset 0 -3px 0 var(--accent); }
+.matrix thead th.colhead:not(.locked) .colhead-label { color: var(--accent); }
+.matrix td.answer.missing { box-shadow: inset 0 0 0 2px var(--danger); background: var(--danger-soft) !important; }
+.matrix thead th.colhead.locked { background: var(--paper-2); color: var(--ink-faint); }
+.colhead-label { display: block; }
+.colhead-note { display: block; margin-top: 4px; font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-faint); }
+
+.colhelp { display: inline-grid; place-items: center; width: 19px; height: 19px; margin: 7px auto 0; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-soft); font-family: var(--font-mono); font-size: 11px; font-weight: 700; line-height: 1; cursor: pointer; padding: 0; transition: border-color .12s ease, color .12s ease, background .12s ease; }
+.colhead { position: relative; }
+.colhelp:hover, .colhelp:focus-visible { border-color: var(--accent); color: var(--accent); background: var(--accent-softer); outline: none; }
+
+.info-pop-backdrop { position: fixed; inset: 0; z-index: 200; background: rgba(34,31,26,.42); display: flex; align-items: center; justify-content: center; padding: 22px; animation: rise .16s ease; }
+.info-pop { background: var(--surface); border: 1px solid var(--line-strong); border-radius: 18px; max-width: 440px; width: 100%; padding: 24px 26px; box-shadow: var(--shadow-md); }
+.info-pop-title { font-family: var(--font-display); font-optical-sizing: auto; font-weight: 600; font-size: 19px; letter-spacing: -.01em; margin: 0 0 12px; color: var(--ink); }
+.info-pop-body { font-size: 14.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 20px; }
+.info-pop-body .ex-lead { font-weight: 600; color: var(--ink); }
+.info-pop-close { width: 100%; justify-content: center; }
+.matrix td.answer.locked { background: var(--paper-2) !important; }
+.matrix td.answer.locked .numscale { opacity: .38; pointer-events: none; }
+
+.numscale { display: flex; flex-direction: column; gap: 0; align-items: stretch; width: 100%; border: 1px solid var(--line-strong); border-radius: 9px; overflow: hidden; background: transparent; }
+.numscale .ns { position: relative; width: 100%; }
+.numscale .ns + .ns label { border-top: 1px solid var(--line); }
+.numscale .ns input { position: absolute; opacity: 0; width: 0; height: 0; }
+.numscale .ns label { display: grid; place-items: center; width: 100%; min-height: 28px; padding: 4px 6px; background: rgba(255,255,255,.5); color: var(--ink-soft); font-family: var(--font-mono); font-size: 14px; font-weight: 600; line-height: 1.2; text-align: center; cursor: pointer; user-select: none; transition: background .12s ease, color .12s ease; }
+.numscale .ns input:focus-visible + label { box-shadow: inset 0 0 0 2px var(--accent); }
+
+.numscale .ns input:checked + label { color: #fff; }
+.numscale .ns:nth-child(1) input:checked + label { background: var(--v1); }
+.numscale .ns:nth-child(2) input:checked + label { background: var(--v2); }
+.numscale .ns:nth-child(3) input:checked + label { background: var(--v3c); }
+.numscale .ns:nth-child(4) input:checked + label { background: var(--v4); }
+.numscale .ns:nth-child(5) input:checked + label { background: var(--v5); }
+
+.matrix.grouped thead th.grouphead { position: -webkit-sticky; position: sticky; top: 0; z-index: 34; height: 38px; color: var(--ink); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; padding: 8px 12px; text-align: center; vertical-align: middle; border-right: 2px solid var(--surface); border-bottom: 1px solid var(--line-strong); }
+.matrix.grouped thead th.colhead { top: 38px; }
+.matrix.grouped thead th.corner { z-index: 44; }
+
+.matrix.grouped thead th.grouphead.cgrp-0 { background: #e6edf5; color: #3a567a; }
+.matrix.grouped thead th.grouphead.cgrp-1 { background: #e8efe1; color: #4a6440; }
+.matrix.grouped thead th.grouphead.cgrp-2 { background: #f5ecdb; color: #876334; }
+.matrix.grouped thead th.grouphead.cgrp-3 { background: #ede5f1; color: #62507c; }
+.matrix.grouped thead th.grouphead.cgrp-4 { background: #e3efeb; color: #3a6359; }
+.matrix.grouped thead th.grouphead.cgrp-5 { background: #f4e8ea; color: #87505a; }
+
+.matrix thead th.colhead.cgrp-0:not(.locked), .matrix td.answer.cgrp-0:not(.locked) { background: #f2f6fb; }
+.matrix thead th.colhead.cgrp-1:not(.locked), .matrix td.answer.cgrp-1:not(.locked) { background: #f3f7ef; }
+.matrix thead th.colhead.cgrp-2:not(.locked), .matrix td.answer.cgrp-2:not(.locked) { background: #faf4ea; }
+.matrix thead th.colhead.cgrp-3:not(.locked), .matrix td.answer.cgrp-3:not(.locked) { background: #f7f2f9; }
+.matrix thead th.colhead.cgrp-4:not(.locked), .matrix td.answer.cgrp-4:not(.locked) { background: #f1f8f5; }
+.matrix thead th.colhead.cgrp-5:not(.locked), .matrix td.answer.cgrp-5:not(.locked) { background: #faf1f3; }
+
+.matrix.grouped .gstart.cgrp-0 { border-left: 2px solid #b6cbe0; }
+.matrix.grouped .gstart.cgrp-1 { border-left: 2px solid #b3c8a0; }
+.matrix.grouped .gstart.cgrp-2 { border-left: 2px solid #e0c79b; }
+.matrix.grouped .gstart.cgrp-3 { border-left: 2px solid #c9b7d9; }
+.matrix.grouped .gstart.cgrp-4 { border-left: 2px solid #a7ccc1; }
+.matrix.grouped .gstart.cgrp-5 { border-left: 2px solid #e0bcc1; }
+
+.usage-grouphdr { margin: 18px 0 4px; font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 7px 11px; border-radius: 8px; border-left: 3px solid var(--line-strong); color: var(--accent); }
+.usage-list.grouped .usage-grouphdr:first-child { margin-top: 4px; }
+.usage-grouphdr.cgrp-0 { background: #f2f6fb; color: #3a567a; border-left-color: #b6cbe0; }
+.usage-grouphdr.cgrp-1 { background: #f3f7ef; color: #4a6440; border-left-color: #b3c8a0; }
+.usage-grouphdr.cgrp-2 { background: #faf4ea; color: #876334; border-left-color: #e0c79b; }
+.usage-grouphdr.cgrp-3 { background: #f7f2f9; color: #62507c; border-left-color: #c9b7d9; }
+.usage-grouphdr.cgrp-4 { background: #f1f8f5; color: #3a6359; border-left-color: #a7ccc1; }
+.usage-grouphdr.cgrp-5 { background: #faf1f3; color: #87505a; border-left-color: #e0bcc1; }
+.variant-link { font-size: 13px; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+.scroll-cue { position: absolute; top: 0; right: 0; bottom: 0; width: 66px; display: flex; align-items: center; justify-content: flex-end; pointer-events: none; border-radius: 0 var(--radius) var(--radius) 0; background: linear-gradient(to right, rgba(251,247,238,0), rgba(251,247,238,.97)); }
+.cue-pill { margin-right: 10px; background: var(--accent); color: #fff; font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; padding: 7px 12px; border-radius: 999px; white-space: nowrap; box-shadow: 0 6px 16px rgba(202,0,0,.32); animation: cuePulse 1.5s ease-in-out infinite; }
+@keyframes cuePulse { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-5px); } }
+
+.intake { display: flex; flex-direction: column; gap: 22px; }
+.intake-block.missing { background: var(--danger-soft); border-radius: 12px; padding: 12px; margin: -12px; }
+.intake-q { font-weight: 600; font-size: 15.5px; margin: 0 0 11px; }
+.opt-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.opt { cursor: pointer; font: inherit; font-weight: 500; font-size: 14px; padding: 9px 15px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); transition: border-color .15s ease, color .15s ease, background .15s ease; }
+.opt.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 3px 10px rgba(202,0,0,.26); }
+.intake-select { width: 100%; max-width: 380px; padding: 12px 14px; border-radius: 11px; border: 1px solid var(--line-strong); background: var(--surface); font: inherit; font-weight: 500; font-size: 14.5px; color: var(--ink); cursor: pointer; }
+.intake-select:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 1px; border-color: var(--accent); }
+.card.intake.extra { margin-bottom: 16px; }
+.extra-title { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 16px; }
+
+.pagenav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; }
+.pagenav .spacer { flex: 1; }
+
+.btn { appearance: none; cursor: pointer; font: inherit; font-weight: 600; border: 0; padding: 12px 26px; border-radius: 11px; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: transform .12s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease; }
+.btn-primary { color: #fff; background: var(--accent); box-shadow: 0 4px 14px rgba(202,0,0,.24); }
+.btn-primary:active { transform: translateY(1px); background: var(--accent-press); box-shadow: 0 2px 8px rgba(202,0,0,.26); }
+.btn-primary:disabled { opacity: .55; cursor: default; transform: none; box-shadow: none; }
+.btn-ghost { color: var(--ink); background: var(--surface); border: 1px solid var(--line-strong); }
+.btn-ghost:active { transform: translateY(1px); }
+.btn-lg { padding: 15px 30px; font-size: 16px; }
+
+.page.done { text-align: center; max-width: 600px; margin: 0 auto; }
+.page.done .check { width: 74px; height: 74px; margin: 6px auto 18px; border-radius: 18px; display: grid; place-items: center; font-size: 34px; font-weight: 700; color: #fff; background: var(--moss); box-shadow: 0 12px 28px rgba(77,107,60,.34); }
+.page.done.incomplete .check { background: var(--warn); box-shadow: 0 12px 28px rgba(192,138,62,.34); }
+.page.done h2 { font-family: var(--font-display); font-optical-sizing: auto; margin: 6px 0 8px; font-size: 30px; letter-spacing: -.018em; font-weight: 600; }
+.page.done p { color: var(--ink-soft); margin: 0 0 24px; }
+.done-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+
+.page.gate { text-align: center; max-width: 540px; margin: 6vh auto 0; }
+.gate-icon { width: 74px; height: 74px; margin: 0 auto 18px; border-radius: 18px; display: grid; place-items: center; font-size: 34px; font-weight: 700; color: #fff; background: var(--warn); box-shadow: 0 12px 28px rgba(192,138,62,.3); }
+.gate-icon.ok { background: var(--moss); box-shadow: 0 12px 28px rgba(77,107,60,.32); }
+.gate-icon.wait { background: var(--ink-faint); box-shadow: 0 12px 28px rgba(0,0,0,.14); }
+.page.gate h2 { font-family: var(--font-display); margin: 4px 0 10px; font-size: 26px; letter-spacing: -.018em; font-weight: 600; }
+.page.gate p { color: var(--ink-soft); margin: 0 auto 20px; max-width: 440px; }
+
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 120; background: var(--ink); color: var(--surface); padding: 13px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; box-shadow: var(--shadow-md); animation: rise .2s ease; max-width: 92vw; }
+.toast[hidden] { display: none; }
+.toast.warn { background: var(--danger); color: #fff; }
+@keyframes rise { from { transform: translate(-50%,10px); opacity: 0; } to { transform: translate(-50%,0); opacity: 1; } }
+
+@media (hover: hover) and (pointer: fine) {
+  .step-btn:hover { color: var(--ink); }
+  .usage-toggle:hover { background: var(--paper-2); }
+  .usage-toggle:hover .usage-check { transform: scale(1.05); }
+  .seg-opt:hover { color: var(--accent); }
+  .chip:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .chip.other:hover { color: var(--accent); }
+  .numscale .ns label:hover { background: var(--accent-softer); color: var(--accent); }
+  .opt:hover { border-color: var(--accent); color: var(--accent); }
+  .intake-select:hover { border-color: var(--ink-soft); }
+  .btn-primary:hover { background: var(--accent-2); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(202,0,0,.3); }
+  .btn-ghost:hover { border-color: var(--ink-soft); }
+}
+
+@media (max-width: 720px) {
+  .topbar-inner { gap: 12px; }
+  .brand { font-size: 15px; min-width: 0; flex: 1 1 auto; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .progress { flex: 0 0 auto; max-width: none; gap: 0; }
+  .progress-track { display: none; }  
+  .step-label { display: none; }
+  .step-line { width: 13px; }
+  .matrix thead th.corner, .matrix tbody th.qcell { width: 168px; min-width: 168px; max-width: 168px; padding-left: 13px; padding-right: 13px; }
+  .matrix thead th.colhead, .matrix td.answer { width: 116px; min-width: 116px; }
+  .matrix-scroll { max-height: calc(100vh - 220px); max-height: calc(100svh - 220px); scroll-padding-left: 168px; }
+  
+  .numscale .ns label { min-height: 46px; font-size: 15px; }
+  .matrix tbody th.qcell { padding-top: 12px; padding-bottom: 12px; }
+  .matrix-lead { font-size: 13.5px; }
+  .scalebar { padding: 10px 12px; gap: 7px 12px; }
+  .pagenav .btn { flex: 1; justify-content: center; }
+  .seg-opt { padding: 9px 16px; }
+}
+@media (max-width: 420px) {
+  .matrix thead th.corner, .matrix tbody th.qcell { width: 144px; min-width: 144px; max-width: 144px; }
+  .matrix thead th.colhead, .matrix td.answer { width: 108px; min-width: 108px; }
+  .matrix-scroll { scroll-padding-left: 144px; }
+}
+
+@media (min-width: 1100px) {
+  .view:has(.group-page) { max-width: 1200px; }
+  .matrix thead th.corner, .matrix tbody th.qcell { width: 360px; min-width: 360px; max-width: 360px; }
+  .matrix thead th.colhead, .matrix td.answer { width: 160px; min-width: 160px; }
+  .matrix tbody th.qcell { font-size: 15px; }
+  .matrix thead th.colhead { font-size: 14px; }
+  .numscale .ns label { min-height: 28px; font-size: 14px; }
+  .matrix-scroll { max-height: calc(100vh - 250px); max-height: calc(100svh - 250px); scroll-padding-left: 360px; }
+}
+@media (min-width: 1600px) {
+  .view:has(.group-page) { max-width: 1460px; }
+  .matrix thead th.corner, .matrix tbody th.qcell { width: 400px; min-width: 400px; max-width: 400px; }
+  .matrix thead th.colhead, .matrix td.answer { width: 184px; min-width: 184px; }
+  .numscale .ns label { min-height: 30px; font-size: 15px; }
+  .matrix-scroll { scroll-padding-left: 400px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#welcome">
+        <img class="brand-logo" src="data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22471%22%0Aheight%3D%22398%22%20stroke%3D%22%23C00%22%20stroke-width%3D%224%22%3E%0A%3Cpath%20fill%3D%22%23C00%22%0Ad%3D%22m200%2C8a186%2C186%200%201%2C0%202%2C0zm36%2C368a186%2C186%200%200%2C1%200-364%22%2F%3E%0A%3Cpath%20fill%3D%22none%22%20d%3D%22m272%2C8a186%2C186%200%201%2C0%202%2C0z%22%2F%3E%0A%3C%2Fsvg%3E" alt="METU" width="471" height="398" />
+        <span id="brandTitle">UTAUT Survey</span>
+      </a>
+      <div class="progress" aria-label="Progress">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <span class="progress-text" id="progressText">0 / 0</span>
+      </div>
+    </div>
+  </header>
+
+  
+  <nav class="stepper" id="stepper" aria-label="Sections" hidden></nav>
+
+  
+  <main class="view" id="view" tabindex="-1"></main>
+
+  
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  
+  <script>window.SURVEY_VARIANT = "merged";</script>
+  <script>
+window.SURVEY_CONFIG = { webAppUrl: "https://script.google.com/macros/s/AKfycbyV-l8yNOs7qV9fWBtDKM9gTBXUwjukvEmrdyKGsjVkcOp9qgDu0jWStGwbRCc2HRVI/exec", requireToken: false };
+window.SURVEY = {
+ "meta": {
+  "title": "AI Use in Civil Engineering Studies",
+  "org": "Middle East Technical University (METU) · Department of Civil Engineering",
+  "note": "Participation is voluntary and your responses are anonymous. They are used only for this academic study.",
+  "intro": "We are studying how civil engineering students use AI tools such as ChatGPT, Copilot and others in their everyday academic work, including learning, problem solving, reports and presentations, and coding. Our aim is to understand where AI genuinely helps, what gets in the way, and how it can better support engineering education at METU.",
+  "howlong": "It takes about five to seven minutes. First a few quick questions about you, then for five task areas you tell us whether you use AI and rate a short set of statements. You only answer the areas where you actually use AI, and there are no right or wrong answers.",
+  "sourceFile": "source/UTAUT_Group_Matrices_2.xlsx",
+  "aiTools": [
+   "ChatGPT",
+   "Claude",
+   "Grammarly",
+   "Microsoft Copilot",
+   "Google Gemini",
+   "NotebookLM",
+   "Notion AI",
+   "Perplexity",
+   "SciSpace",
+   "Scholar Labs",
+   "Wolfram Alpha",
+   "Photomath",
+   "Symbolab",
+   "Gamma",
+   "Canva AI",
+   "GitHub Copilot"
+  ]
+ },
+ "scale": {
+  "min": 1,
+  "max": 5,
+  "labels": {
+   "1": "Strongly disagree",
+   "2": "Disagree",
+   "3": "Neutral",
+   "4": "Agree",
+   "5": "Strongly agree"
+  }
+ },
+ "intake": [
+  {
+   "id": "year",
+   "label": "Which year's courses are you mostly taking?",
+   "options": [
+    "1st year",
+    "2nd year",
+    "3rd year",
+    "4th year",
+    "Postgraduate"
+   ]
+  },
+  {
+   "id": "semester",
+   "type": "select",
+   "label": "Which semester are you in?",
+   "options": [
+    "1st semester",
+    "2nd semester",
+    "3rd semester",
+    "4th semester",
+    "5th semester",
+    "6th semester",
+    "7th semester",
+    "8th semester",
+    "9th semester",
+    "10th semester",
+    "11th semester",
+    "12th semester",
+    "13th semester",
+    "14th semester",
+    "Master's",
+    "PhD"
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "id": "sec_general",
+   "slug": "general",
+   "name": "GENERAL",
+   "description": "Your overall, everyday use of AI for academic and professional communication, and for non academic exploration.",
+   "aiTools": [
+    "ChatGPT",
+    "Claude",
+    "Grammarly",
+    "Microsoft Copilot",
+    "Google Gemini"
+   ],
+   "columns": [
+    {
+     "id": "c0",
+     "label": "Academic & Professional Communication",
+     "examples": "writing an email to a professor (a question, an extension or a reminder), a team announcement or status update, a professional message in English; writing up your experience and skills, editing your CV, a cover or motivation letter, a statement of purpose, a research or teaching statement, a scholarship application; generating likely interview questions, drafting answers, rehearsing an English or technical interview, and a self introduction"
+    },
+    {
+     "id": "c1",
+     "label": "Non Academic Use / Exploration",
+     "examples": "asking questions out of curiosity, planning a trip or your monthly budget, getting movie or book recommendations, brainstorming ideas for a personal hobby, and looking up everyday facts unrelated to your studies"
+    }
+   ],
+   "groups": [
+    {
+     "name": "Performance Expectancy",
+     "questions": [
+      {
+       "id": "q1",
+       "code": "RA1",
+       "text": "Using AI lets me accomplish tasks more quickly."
+      },
+      {
+       "id": "q2",
+       "code": "RA5",
+       "text": "Using AI increases my productivity."
+      },
+      {
+       "id": "q3",
+       "code": "U6",
+       "text": "I find AI useful."
+      },
+      {
+       "id": "q4",
+       "code": "OE7",
+       "text": "Using AI increases my chances of gaining additional benefits."
+      }
+     ],
+     "title": "Usefulness and productivity",
+     "help": "Whether AI helps you get this work done better and faster (more done, higher quality)."
+    },
+    {
+     "name": "Effort Expectancy",
+     "questions": [
+      {
+       "id": "q5",
+       "code": "EOU3",
+       "text": "My interaction with AI is clear and understandable."
+      },
+      {
+       "id": "q6",
+       "code": "EOU6",
+       "text": "I find AI easy to use."
+      },
+      {
+       "id": "q7",
+       "code": "EOU5",
+       "text": "It is easy to become skillful with the AI tools I use."
+      }
+     ],
+     "title": "Ease of use",
+     "help": "How easy AI is to use and to get good at for this work."
+    },
+    {
+     "name": "Attitude Toward Using AI",
+     "questions": [
+      {
+       "id": "q8",
+       "code": "A1",
+       "text": "Using AI is a good idea."
+      },
+      {
+       "id": "q9",
+       "code": "AF1",
+       "text": "AI makes work more interesting."
+      },
+      {
+       "id": "q10",
+       "code": "AF2",
+       "text": "Working with AI is fun."
+      },
+      {
+       "id": "q11",
+       "code": "Affect1",
+       "text": "I like working with AI."
+      }
+     ],
+     "title": "Attitude and enjoyment",
+     "help": "How you feel about using AI here: whether it is a good idea, interesting, and enjoyable."
+    },
+    {
+     "name": "Social Influence",
+     "questions": [
+      {
+       "id": "q12",
+       "code": "SN1",
+       "text": "People who influence my behavior (for example, instructors, classmates, or family) think I should use AI."
+      },
+      {
+       "id": "q13",
+       "code": "SN2",
+       "text": "People who are important to me think I should use AI."
+      },
+      {
+       "id": "q14",
+       "code": "SF4",
+       "text": "In general, my department or university supports the use of AI."
+      }
+     ],
+     "title": "What people around you think",
+     "help": "Whether people who matter to you (instructors, classmates, family) think you should use AI."
+    },
+    {
+     "name": "Facilitating Conditions",
+     "questions": [
+      {
+       "id": "q15",
+       "code": "PBC2",
+       "text": "I have the resources necessary to use AI (for example, a device, internet access, and a free or paid subscription)."
+      },
+      {
+       "id": "q16",
+       "code": "PBC3",
+       "text": "I have the knowledge necessary to use AI."
+      }
+     ],
+     "title": "Resources and support",
+     "help": "Whether you have what you need to use AI: a device, internet, access, the know how, and support."
+    },
+    {
+     "name": "Self Efficacy",
+     "questions": [
+      {
+       "id": "q17",
+       "code": "SE1",
+       "text": "I could complete a task using AI even if there was no one around to tell me what to do."
+      },
+      {
+       "id": "q18",
+       "code": "SE4",
+       "text": "I could complete a task using AI if I could call someone for help when I got stuck."
+      },
+      {
+       "id": "q19",
+       "code": "SE6",
+       "text": "I could complete a task using AI if I had a lot of time to complete it."
+      }
+     ],
+     "title": "Confidence on your own",
+     "help": "How confident you are completing a task with AI by yourself, under different conditions."
+    },
+    {
+     "name": "Anxiety (reverse coded)",
+     "questions": [
+      {
+       "id": "q20",
+       "code": "ANX1",
+       "text": "I feel anxious about using AI."
+      },
+      {
+       "id": "q21",
+       "code": "ANX3",
+       "text": "I hesitate to use AI for fear of making mistakes."
+      },
+      {
+       "id": "q22",
+       "code": "ANX-add",
+       "text": "I hesitate to use AI for fear of getting recognized for using it."
+      },
+      {
+       "id": "q23",
+       "code": "ANX4",
+       "text": "AI is somewhat intimidating to me."
+      }
+     ],
+     "title": "Worries and hesitations",
+     "help": "Worries that hold you back: making mistakes, being noticed for using AI, or feeling intimidated."
+    },
+    {
+     "name": "Behavioral Intention",
+     "questions": [
+      {
+       "id": "q24",
+       "code": "BI1",
+       "text": "I intend to use AI in the coming term."
+      },
+      {
+       "id": "q25",
+       "code": "BI2",
+       "text": "I predict I will use AI in the coming term."
+      }
+     ],
+     "title": "Plans to keep using AI",
+     "help": "Whether you intend and expect to keep using AI in the coming term."
+    },
+    {
+     "name": "Trust",
+     "questions": [
+      {
+       "id": "q26",
+       "code": "TR2",
+       "text": "I trust the AI tools to be safe and reliable in tackling complex or difficult tasks."
+      },
+      {
+       "id": "q27",
+       "code": "TR3",
+       "text": "I would trust the problem solving and teaching skills of the AI tools more than the skill of the professors and/or teaching assistants."
+      },
+      {
+       "id": "q28",
+       "code": "TR4",
+       "text": "AI tools can be trusted to carry out tasks safely (without grave errors)."
+      }
+     ],
+     "title": "Trust in AI",
+     "help": "How much you trust AI to be safe, reliable, and capable for this work."
+    },
+    {
+     "name": "Task Technology Fit",
+     "questions": [
+      {
+       "id": "q29",
+       "code": "TTF1",
+       "text": "Using AI fits well with my academic goals and needs."
+      },
+      {
+       "id": "q30",
+       "code": "TTF2",
+       "text": "Using AI fits well with the way I like to enhance my efficiency."
+      },
+      {
+       "id": "q31",
+       "code": "TTF4",
+       "text": "Using AI fits well with all aspects of my academic tasks."
+      }
+     ],
+     "title": "Fit with how you work",
+     "help": "How well AI fits your goals and the way you actually study and work in this area."
+    }
+   ],
+   "extra": [
+    {
+     "id": "ai_experience",
+     "label": "How would you describe your experience with AI tools?",
+     "options": [
+      "Never used",
+      "Beginner",
+      "Intermediate",
+      "Advanced"
+     ]
+    },
+    {
+     "id": "freq",
+     "label": "How often do you use AI for your coursework or engineering tasks?",
+     "options": [
+      "Daily",
+      "A few times a week",
+      "About once a week",
+      "Rarely",
+      "Never"
+     ]
+    },
+    {
+     "id": "paid",
+     "label": "Do you pay for any AI tool (paid subscription)?",
+     "options": [
+      "No",
+      "Yes, one",
+      "Yes, more than one"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "sec_learning_brainstorming",
+   "slug": "learning_brainstorming",
+   "name": "LEARNING & BRAINSTORMING",
+   "description": "Using AI to learn and generate ideas: active learning, preparing study materials, and the research process.",
+   "aiTools": [
+    "ChatGPT",
+    "Claude",
+    "NotebookLM",
+    "Notion AI",
+    "Google Gemini",
+    "Perplexity",
+    "SciSpace",
+    "Scholar Labs"
+   ],
+   "columns": [
+    {
+     "id": "c0",
+     "label": "Active Learning",
+     "examples": "having a topic explained from scratch, in simple or technical language, with examples, step by step or as a quick recap; explaining a term, formula, variable, symbol or unit, comparing two concepts, telling apart things that are often confused; building a concept map, making a real life analogy, correcting common misconceptions; and planning how to start a topic, setting prerequisites, ordering what to learn, and a weekly, daily or pre exam study plan"
+    },
+    {
+     "id": "c1",
+     "label": "Learning Material Preparation",
+     "examples": "tidying up scattered notes, merging several sources, building a glossary or term list, making flashcards; and summarizing a PDF, slides, lecture notes, a book chapter, an article, a technical report, a regulation or a standard"
+    },
+    {
+     "id": "c2",
+     "label": "Research Process",
+     "examples": "suggesting or narrowing a topic, finding a research question, defining the aim and scope, writing the expected contribution; and generating keywords, building a source list, matching Turkish and English search terms, and planning a database search strategy"
+    }
+   ],
+   "groups": [
+    {
+     "name": "Performance Expectancy",
+     "questions": [
+      {
+       "id": "q1",
+       "code": "RA1",
+       "text": "Using AI for learning and brainstorming lets me accomplish tasks more quickly."
+      },
+      {
+       "id": "q2",
+       "code": "RA5",
+       "text": "Using AI increases my productivity in learning and brainstorming."
+      },
+      {
+       "id": "q3",
+       "code": "U6",
+       "text": "I find AI useful for learning and brainstorming."
+      },
+      {
+       "id": "q4",
+       "code": "OE7",
+       "text": "Using AI for learning and brainstorming increases my chances of gaining additional benefits."
+      }
+     ],
+     "title": "Usefulness and productivity",
+     "help": "Whether AI helps you get this work done better and faster (more done, higher quality)."
+    },
+    {
+     "name": "Effort Expectancy",
+     "questions": [
+      {
+       "id": "q5",
+       "code": "EOU3",
+       "text": "My interaction with AI for learning and brainstorming is clear and understandable."
+      },
+      {
+       "id": "q6",
+       "code": "EOU6",
+       "text": "I find AI easy to use for learning and brainstorming."
+      },
+      {
+       "id": "q7",
+       "code": "EOU5",
+       "text": "It is easy to become skillful with the AI tools I use for learning and brainstorming."
+      }
+     ],
+     "title": "Ease of use",
+     "help": "How easy AI is to use and to get good at for this work."
+    },
+    {
+     "name": "Attitude Toward Using AI",
+     "questions": [
+      {
+       "id": "q8",
+       "code": "A1",
+       "text": "Using AI is a good idea."
+      },
+      {
+       "id": "q9",
+       "code": "AF1",
+       "text": "AI makes work more interesting."
+      },
+      {
+       "id": "q10",
+       "code": "AF2",
+       "text": "Working with AI is fun."
+      },
+      {
+       "id": "q11",
+       "code": "Affect1",
+       "text": "I like working with AI."
+      }
+     ],
+     "title": "Attitude and enjoyment",
+     "help": "How you feel about using AI here: whether it is a good idea, interesting, and enjoyable."
+    },
+    {
+     "name": "Social Influence",
+     "questions": [
+      {
+       "id": "q12",
+       "code": "SN1",
+       "text": "People who influence my behavior (for example, instructors, classmates, or family) think I should use AI."
+      },
+      {
+       "id": "q13",
+       "code": "SN2",
+       "text": "People who are important to me think I should use AI."
+      },
+      {
+       "id": "q14",
+       "code": "SF4",
+       "text": "In general, my department or university supports the use of AI."
+      }
+     ],
+     "title": "What people around you think",
+     "help": "Whether people who matter to you (instructors, classmates, family) think you should use AI."
+    },
+    {
+     "name": "Facilitating Conditions",
+     "questions": [
+      {
+       "id": "q15",
+       "code": "PBC2",
+       "text": "I have the resources necessary to use AI (for example, a device, internet access, and a free or paid subscription)."
+      },
+      {
+       "id": "q16",
+       "code": "PBC3",
+       "text": "I have the knowledge necessary to use AI."
+      }
+     ],
+     "title": "Resources and support",
+     "help": "Whether you have what you need to use AI: a device, internet, access, the know how, and support."
+    },
+    {
+     "name": "Self Efficacy",
+     "questions": [
+      {
+       "id": "q17",
+       "code": "SE1",
+       "text": "I could complete a task using AI even if there was no one around to tell me what to do."
+      },
+      {
+       "id": "q18",
+       "code": "SE4",
+       "text": "I could complete a task using AI if I could call someone for help when I got stuck."
+      },
+      {
+       "id": "q19",
+       "code": "SE6",
+       "text": "I could complete a task using AI if I had a lot of time to complete it."
+      }
+     ],
+     "title": "Confidence on your own",
+     "help": "How confident you are completing a task with AI by yourself, under different conditions."
+    },
+    {
+     "name": "Anxiety (reverse coded)",
+     "questions": [
+      {
+       "id": "q20",
+       "code": "ANX1",
+       "text": "I feel anxious about using AI."
+      },
+      {
+       "id": "q21",
+       "code": "ANX3",
+       "text": "I hesitate to use AI for fear of making mistakes."
+      },
+      {
+       "id": "q22",
+       "code": "ANX-add",
+       "text": "I hesitate to use AI for fear of getting recognized for using it."
+      },
+      {
+       "id": "q23",
+       "code": "ANX4",
+       "text": "AI is somewhat intimidating to me."
+      }
+     ],
+     "title": "Worries and hesitations",
+     "help": "Worries that hold you back: making mistakes, being noticed for using AI, or feeling intimidated."
+    },
+    {
+     "name": "Behavioral Intention",
+     "questions": [
+      {
+       "id": "q24",
+       "code": "BI1",
+       "text": "I intend to use AI in the coming term."
+      },
+      {
+       "id": "q25",
+       "code": "BI2",
+       "text": "I predict I will use AI in the coming term."
+      }
+     ],
+     "title": "Plans to keep using AI",
+     "help": "Whether you intend and expect to keep using AI in the coming term."
+    },
+    {
+     "name": "Trust",
+     "questions": [
+      {
+       "id": "q26",
+       "code": "TR2",
+       "text": "I trust the AI tools to be safe and reliable in tackling complex or difficult tasks."
+      },
+      {
+       "id": "q27",
+       "code": "TR3",
+       "text": "I would trust the problem solving and teaching skills of the AI tools more than the skill of the professors and/or teaching assistants."
+      },
+      {
+       "id": "q28",
+       "code": "TR4",
+       "text": "AI tools can be trusted to carry out tasks safely (without grave errors)."
+      }
+     ],
+     "title": "Trust in AI",
+     "help": "How much you trust AI to be safe, reliable, and capable for this work."
+    },
+    {
+     "name": "Task Technology Fit",
+     "questions": [
+      {
+       "id": "q29",
+       "code": "TTF1",
+       "text": "Using AI for learning and brainstorming fits well with my goals and needs."
+      },
+      {
+       "id": "q30",
+       "code": "TTF2",
+       "text": "Using AI fits well with the way I like to enhance my efficiency in learning and brainstorming."
+      },
+      {
+       "id": "q31",
+       "code": "TTF4",
+       "text": "Using AI fits well with all aspects of my learning and brainstorming tasks."
+      }
+     ],
+     "title": "Fit with how you work",
+     "help": "How well AI fits your goals and the way you actually study and work in this area."
+    }
+   ]
+  },
+  {
+   "id": "sec_problem_solving",
+   "slug": "problem_solving",
+   "name": "PROBLEM SOLVING",
+   "description": "Using AI to understand, plan, and solve problems for homework, self study, and exam preparation.",
+   "aiTools": [
+    "ChatGPT",
+    "Claude",
+    "Google Gemini",
+    "Wolfram Alpha",
+    "Photomath",
+    "Symbolab",
+    "Microsoft Copilot"
+   ],
+   "columns": [
+    {
+     "id": "c0",
+     "label": "Understanding & Planning Problems (Homework / Self Exercise)",
+     "examples": "breaking a question into parts, listing what is given and what is asked, drawing out the assumptions, choosing a suitable formula or method; making a solution plan, explaining each step, producing a short or detailed solution, suggesting an alternative method; checking for math, unit, sign or logic errors, spotting a missing step, interpreting the physical meaning of the result; and simplifying the question, listing what to submit, reading a rubric, and drawing up a work plan"
+    },
+    {
+     "id": "c1",
+     "label": "Exam Preparation (Self Exercise)",
+     "examples": "practicing multiple choice, true or false, fill in the blank, open ended, calculation and case questions at easy, medium or hard difficulty; planning your midterm or final, a last three days plan, finding the most frequently tested topics, spotting your weak areas; and making a formula sheet, a one page review note, a list of common mistakes and flashcards"
+    }
+   ],
+   "groups": [
+    {
+     "name": "Performance Expectancy",
+     "questions": [
+      {
+       "id": "q1",
+       "code": "RA1",
+       "text": "Using AI for problem solving lets me accomplish tasks more quickly."
+      },
+      {
+       "id": "q2",
+       "code": "RA5",
+       "text": "Using AI increases my productivity in problem solving."
+      },
+      {
+       "id": "q3",
+       "code": "U6",
+       "text": "I find AI useful for problem solving."
+      },
+      {
+       "id": "q4",
+       "code": "OE7",
+       "text": "Using AI for problem solving increases my chances of gaining additional benefits."
+      }
+     ],
+     "title": "Usefulness and productivity",
+     "help": "Whether AI helps you get this work done better and faster (more done, higher quality)."
+    },
+    {
+     "name": "Effort Expectancy",
+     "questions": [
+      {
+       "id": "q5",
+       "code": "EOU3",
+       "text": "My interaction with AI for problem solving is clear and understandable."
+      },
+      {
+       "id": "q6",
+       "code": "EOU6",
+       "text": "I find AI easy to use for problem solving."
+      },
+      {
+       "id": "q7",
+       "code": "EOU5",
+       "text": "It is easy to become skillful with the AI tools I use for problem solving."
+      }
+     ],
+     "title": "Ease of use",
+     "help": "How easy AI is to use and to get good at for this work."
+    },
+    {
+     "name": "Attitude Toward Using AI",
+     "questions": [
+      {
+       "id": "q8",
+       "code": "A1",
+       "text": "Using AI is a good idea."
+      },
+      {
+       "id": "q9",
+       "code": "AF1",
+       "text": "AI makes work more interesting."
+      },
+      {
+       "id": "q10",
+       "code": "AF2",
+       "text": "Working with AI is fun."
+      },
+      {
+       "id": "q11",
+       "code": "Affect1",
+       "text": "I like working with AI."
+      }
+     ],
+     "title": "Attitude and enjoyment",
+     "help": "How you feel about using AI here: whether it is a good idea, interesting, and enjoyable."
+    },
+    {
+     "name": "Social Influence",
+     "questions": [
+      {
+       "id": "q12",
+       "code": "SN1",
+       "text": "People who influence my behavior (for example, instructors, classmates, or family) think I should use AI."
+      },
+      {
+       "id": "q13",
+       "code": "SN2",
+       "text": "People who are important to me think I should use AI."
+      },
+      {
+       "id": "q14",
+       "code": "SF4",
+       "text": "In general, my department or university supports the use of AI."
+      }
+     ],
+     "title": "What people around you think",
+     "help": "Whether people who matter to you (instructors, classmates, family) think you should use AI."
+    },
+    {
+     "name": "Facilitating Conditions",
+     "questions": [
+      {
+       "id": "q15",
+       "code": "PBC2",
+       "text": "I have the resources necessary to use AI (for example, a device, internet access, and a free or paid subscription)."
+      },
+      {
+       "id": "q16",
+       "code": "PBC3",
+       "text": "I have the knowledge necessary to use AI."
+      }
+     ],
+     "title": "Resources and support",
+     "help": "Whether you have what you need to use AI: a device, internet, access, the know how, and support."
+    },
+    {
+     "name": "Self Efficacy",
+     "questions": [
+      {
+       "id": "q17",
+       "code": "SE1",
+       "text": "I could complete a task using AI even if there was no one around to tell me what to do."
+      },
+      {
+       "id": "q18",
+       "code": "SE4",
+       "text": "I could complete a task using AI if I could call someone for help when I got stuck."
+      },
+      {
+       "id": "q19",
+       "code": "SE6",
+       "text": "I could complete a task using AI if I had a lot of time to complete it."
+      }
+     ],
+     "title": "Confidence on your own",
+     "help": "How confident you are completing a task with AI by yourself, under different conditions."
+    },
+    {
+     "name": "Anxiety (reverse coded)",
+     "questions": [
+      {
+       "id": "q20",
+       "code": "ANX1",
+       "text": "I feel anxious about using AI."
+      },
+      {
+       "id": "q21",
+       "code": "ANX3",
+       "text": "I hesitate to use AI for fear of making mistakes."
+      },
+      {
+       "id": "q22",
+       "code": "ANX-add",
+       "text": "I hesitate to use AI for fear of getting recognized for using it."
+      },
+      {
+       "id": "q23",
+       "code": "ANX4",
+       "text": "AI is somewhat intimidating to me."
+      }
+     ],
+     "title": "Worries and hesitations",
+     "help": "Worries that hold you back: making mistakes, being noticed for using AI, or feeling intimidated."
+    },
+    {
+     "name": "Behavioral Intention",
+     "questions": [
+      {
+       "id": "q24",
+       "code": "BI1",
+       "text": "I intend to use AI in the coming term."
+      },
+      {
+       "id": "q25",
+       "code": "BI2",
+       "text": "I predict I will use AI in the coming term."
+      }
+     ],
+     "title": "Plans to keep using AI",
+     "help": "Whether you intend and expect to keep using AI in the coming term."
+    },
+    {
+     "name": "Trust",
+     "questions": [
+      {
+       "id": "q26",
+       "code": "TR2",
+       "text": "I trust the AI tools to be safe and reliable in tackling complex or difficult tasks."
+      },
+      {
+       "id": "q27",
+       "code": "TR3",
+       "text": "I would trust the problem solving and teaching skills of the AI tools more than the skill of the professors and/or teaching assistants."
+      },
+      {
+       "id": "q28",
+       "code": "TR4",
+       "text": "AI tools can be trusted to carry out tasks safely (without grave errors)."
+      }
+     ],
+     "title": "Trust in AI",
+     "help": "How much you trust AI to be safe, reliable, and capable for this work."
+    },
+    {
+     "name": "Task Technology Fit",
+     "questions": [
+      {
+       "id": "q29",
+       "code": "TTF1",
+       "text": "Using AI for problem solving fits well with my goals and needs."
+      },
+      {
+       "id": "q30",
+       "code": "TTF2",
+       "text": "Using AI fits well with the way I like to enhance my efficiency in problem solving."
+      },
+      {
+       "id": "q31",
+       "code": "TTF4",
+       "text": "Using AI fits well with all aspects of my problem solving tasks."
+      }
+     ],
+     "title": "Fit with how you work",
+     "help": "How well AI fits your goals and the way you actually study and work in this area."
+    }
+   ]
+  },
+  {
+   "id": "sec_reporting_presentation_organ",
+   "slug": "reporting_presentation_organization",
+   "name": "REPORTING, PRESENTATION & ORGANIZATION",
+   "description": "Using AI to plan, draft, review, and present academic work such as reports, essays, presentations, visuals, and productivity.",
+   "aiTools": [
+    "ChatGPT",
+    "Claude",
+    "Google Gemini",
+    "Notion AI",
+    "Grammarly",
+    "Gamma",
+    "Canva AI",
+    "Microsoft Copilot"
+   ],
+   "columns": [
+    {
+     "id": "c0",
+     "label": "Planning & Drafting (Report/Essay)",
+     "examples": "structuring a report (introduction, method, findings, discussion, conclusion), setting headings and subheadings, building the flow of content; and drafting the abstract, introduction, literature review, methodology, results, discussion and conclusion"
+    },
+    {
+     "id": "c1",
+     "label": "Quality Checks Before Submission (Report & Pres.)",
+     "examples": "checking spelling, grammar, formatting and citations, matching text with tables and figures, spotting a missing heading, source or calculation step; and improving academic tone, fixing grammar, shortening or strengthening sentences, passive voice, and Turkish to English translation support"
+    },
+    {
+     "id": "c2",
+     "label": "Presentation Preparation",
+     "examples": "writing slide titles and bullet points, turning technical content into presentation language, making a first draft; writing a speaker script or notes, opening, transition and closing lines, generating likely questions, rehearsing out loud, an English script; slide layout, font and colour palette, balancing text and visuals, an academic or corporate style; and splitting into headings, building the flow, dividing slides by time, and splitting parts between speakers"
+    },
+    {
+     "id": "c3",
+     "label": "Charts, Diagrams & Visuals (Report & Pres.)",
+     "examples": "choosing the right chart type, making a diagram, flow chart, timeline or comparison matrix; and poster titles, section layout, short texts, balancing visuals and text, and design suggestions"
+    },
+    {
+     "id": "c4",
+     "label": "Productivity",
+     "examples": "merging the different parts you have produced and keeping the language consistent; and a weekly plan, a to do list, a deadline plan, prioritizing, and a schedule for clashing tasks"
+    }
+   ],
+   "groups": [
+    {
+     "name": "Performance Expectancy",
+     "questions": [
+      {
+       "id": "q1",
+       "code": "RA1",
+       "text": "Using AI for reporting, presentations and organization lets me accomplish tasks more quickly."
+      },
+      {
+       "id": "q2",
+       "code": "RA5",
+       "text": "Using AI increases my productivity in reporting, presentations and organization."
+      },
+      {
+       "id": "q3",
+       "code": "U6",
+       "text": "I find AI useful for reporting, presentations and organization."
+      },
+      {
+       "id": "q4",
+       "code": "OE7",
+       "text": "Using AI for reporting, presentations and organization increases my chances of gaining additional benefits."
+      }
+     ],
+     "title": "Usefulness and productivity",
+     "help": "Whether AI helps you get this work done better and faster (more done, higher quality)."
+    },
+    {
+     "name": "Effort Expectancy",
+     "questions": [
+      {
+       "id": "q5",
+       "code": "EOU3",
+       "text": "My interaction with AI for reporting, presentations and organization is clear and understandable."
+      },
+      {
+       "id": "q6",
+       "code": "EOU6",
+       "text": "I find AI easy to use for reporting, presentations and organization."
+      },
+      {
+       "id": "q7",
+       "code": "EOU5",
+       "text": "It is easy to become skillful with the AI tools I use for reporting, presentations and organization."
+      }
+     ],
+     "title": "Ease of use",
+     "help": "How easy AI is to use and to get good at for this work."
+    },
+    {
+     "name": "Attitude Toward Using AI",
+     "questions": [
+      {
+       "id": "q8",
+       "code": "A1",
+       "text": "Using AI is a good idea."
+      },
+      {
+       "id": "q9",
+       "code": "AF1",
+       "text": "AI makes work more interesting."
+      },
+      {
+       "id": "q10",
+       "code": "AF2",
+       "text": "Working with AI is fun."
+      },
+      {
+       "id": "q11",
+       "code": "Affect1",
+       "text": "I like working with AI."
+      }
+     ],
+     "title": "Attitude and enjoyment",
+     "help": "How you feel about using AI here: whether it is a good idea, interesting, and enjoyable."
+    },
+    {
+     "name": "Social Influence",
+     "questions": [
+      {
+       "id": "q12",
+       "code": "SN1",
+       "text": "People who influence my behavior (for example, instructors, classmates, or family) think I should use AI."
+      },
+      {
+       "id": "q13",
+       "code": "SN2",
+       "text": "People who are important to me think I should use AI."
+      },
+      {
+       "id": "q14",
+       "code": "SF4",
+       "text": "In general, my department or university supports the use of AI."
+      }
+     ],
+     "title": "What people around you think",
+     "help": "Whether people who matter to you (instructors, classmates, family) think you should use AI."
+    },
+    {
+     "name": "Facilitating Conditions",
+     "questions": [
+      {
+       "id": "q15",
+       "code": "PBC2",
+       "text": "I have the resources necessary to use AI (for example, a device, internet access, and a free or paid subscription)."
+      },
+      {
+       "id": "q16",
+       "code": "PBC3",
+       "text": "I have the knowledge necessary to use AI."
+      }
+     ],
+     "title": "Resources and support",
+     "help": "Whether you have what you need to use AI: a device, internet, access, the know how, and support."
+    },
+    {
+     "name": "Self Efficacy",
+     "questions": [
+      {
+       "id": "q17",
+       "code": "SE1",
+       "text": "I could complete a task using AI even if there was no one around to tell me what to do."
+      },
+      {
+       "id": "q18",
+       "code": "SE4",
+       "text": "I could complete a task using AI if I could call someone for help when I got stuck."
+      },
+      {
+       "id": "q19",
+       "code": "SE6",
+       "text": "I could complete a task using AI if I had a lot of time to complete it."
+      }
+     ],
+     "title": "Confidence on your own",
+     "help": "How confident you are completing a task with AI by yourself, under different conditions."
+    },
+    {
+     "name": "Anxiety (reverse coded)",
+     "questions": [
+      {
+       "id": "q20",
+       "code": "ANX1",
+       "text": "I feel anxious about using AI."
+      },
+      {
+       "id": "q21",
+       "code": "ANX3",
+       "text": "I hesitate to use AI for fear of making mistakes."
+      },
+      {
+       "id": "q22",
+       "code": "ANX-add",
+       "text": "I hesitate to use AI for fear of getting recognized for using it."
+      },
+      {
+       "id": "q23",
+       "code": "ANX4",
+       "text": "AI is somewhat intimidating to me."
+      }
+     ],
+     "title": "Worries and hesitations",
+     "help": "Worries that hold you back: making mistakes, being noticed for using AI, or feeling intimidated."
+    },
+    {
+     "name": "Behavioral Intention",
+     "questions": [
+      {
+       "id": "q24",
+       "code": "BI1",
+       "text": "I intend to use AI in the coming term."
+      },
+      {
+       "id": "q25",
+       "code": "BI2",
+       "text": "I predict I will use AI in the coming term."
+      }
+     ],
+     "title": "Plans to keep using AI",
+     "help": "Whether you intend and expect to keep using AI in the coming term."
+    },
+    {
+     "name": "Trust",
+     "questions": [
+      {
+       "id": "q26",
+       "code": "TR2",
+       "text": "I trust the AI tools to be safe and reliable in tackling complex or difficult tasks."
+      },
+      {
+       "id": "q27",
+       "code": "TR3",
+       "text": "I would trust the problem solving and teaching skills of the AI tools more than the skill of the professors and/or teaching assistants."
+      },
+      {
+       "id": "q28",
+       "code": "TR4",
+       "text": "AI tools can be trusted to carry out tasks safely (without grave errors)."
+      }
+     ],
+     "title": "Trust in AI",
+     "help": "How much you trust AI to be safe, reliable, and capable for this work."
+    },
+    {
+     "name": "Task Technology Fit",
+     "questions": [
+      {
+       "id": "q29",
+       "code": "TTF1",
+       "text": "Using AI for reporting, presentations and organization fits well with my goals and needs."
+      },
+      {
+       "id": "q30",
+       "code": "TTF2",
+       "text": "Using AI fits well with the way I like to enhance my efficiency in reporting, presentations and organization."
+      },
+      {
+       "id": "q31",
+       "code": "TTF4",
+       "text": "Using AI fits well with all aspects of my reporting, presentations and organization tasks."
+      }
+     ],
+     "title": "Fit with how you work",
+     "help": "How well AI fits your goals and the way you actually study and work in this area."
+    }
+   ]
+  },
+  {
+   "id": "sec_data_processing_coding",
+   "slug": "data_processing_coding",
+   "name": "DATA PROCESSING & CODING",
+   "description": "Using AI for data and code: collecting and processing data, representing data, and developing, debugging, and running code.",
+   "aiTools": [
+    "ChatGPT",
+    "Claude",
+    "Google Gemini",
+    "Microsoft Copilot",
+    "Wolfram Alpha",
+    "GitHub Copilot"
+   ],
+   "columns": [
+    {
+     "id": "c0",
+     "label": "Data Collection & Processing (Excel & others)",
+     "examples": "deciding what data you need, listing sources, preparing a data template or dictionary, standardizing the input format; and finding missing or duplicate data, fixing format, unit, date or category errors, and standardizing column headers"
+    },
+    {
+     "id": "c1",
+     "label": "Data Representation (Excel & others)",
+     "examples": "descriptive statistics, correlation and regression, trend analysis and outliers; and reading charts, tables and results, and styling the results"
+    },
+    {
+     "id": "c2",
+     "label": "Code Development & Debugging",
+     "examples": "a skeleton, project structure, choosing a language or library, writing a function or algorithm, reading and writing data, plotting code; and explaining an error message, analyzing why it does not work, refactoring, line by line explanation, and adding comments"
+    },
+    {
+     "id": "c3",
+     "label": "Code Execution & Output Representation",
+     "examples": "putting code output into words, preparing figure or table captions, the method section, and turning results into report sentences"
+    }
+   ],
+   "groups": [
+    {
+     "name": "Performance Expectancy",
+     "questions": [
+      {
+       "id": "q1",
+       "code": "RA1",
+       "text": "Using AI for data processing and coding lets me accomplish tasks more quickly."
+      },
+      {
+       "id": "q2",
+       "code": "RA5",
+       "text": "Using AI increases my productivity in data processing and coding."
+      },
+      {
+       "id": "q3",
+       "code": "U6",
+       "text": "I find AI useful for data processing and coding."
+      },
+      {
+       "id": "q4",
+       "code": "OE7",
+       "text": "Using AI for data processing and coding increases my chances of gaining additional benefits."
+      }
+     ],
+     "title": "Usefulness and productivity",
+     "help": "Whether AI helps you get this work done better and faster (more done, higher quality)."
+    },
+    {
+     "name": "Effort Expectancy",
+     "questions": [
+      {
+       "id": "q5",
+       "code": "EOU3",
+       "text": "My interaction with AI for data processing and coding is clear and understandable."
+      },
+      {
+       "id": "q6",
+       "code": "EOU6",
+       "text": "I find AI easy to use for data processing and coding."
+      },
+      {
+       "id": "q7",
+       "code": "EOU5",
+       "text": "It is easy to become skillful with the AI tools I use for data processing and coding."
+      }
+     ],
+     "title": "Ease of use",
+     "help": "How easy AI is to use and to get good at for this work."
+    },
+    {
+     "name": "Attitude Toward Using AI",
+     "questions": [
+      {
+       "id": "q8",
+       "code": "A1",
+       "text": "Using AI is a good idea."
+      },
+      {
+       "id": "q9",
+       "code": "AF1",
+       "text": "AI makes work more interesting."
+      },
+      {
+       "id": "q10",
+       "code": "AF2",
+       "text": "Working with AI is fun."
+      },
+      {
+       "id": "q11",
+       "code": "Affect1",
+       "text": "I like working with AI."
+      }
+     ],
+     "title": "Attitude and enjoyment",
+     "help": "How you feel about using AI here: whether it is a good idea, interesting, and enjoyable."
+    },
+    {
+     "name": "Social Influence",
+     "questions": [
+      {
+       "id": "q12",
+       "code": "SN1",
+       "text": "People who influence my behavior (for example, instructors, classmates, or family) think I should use AI."
+      },
+      {
+       "id": "q13",
+       "code": "SN2",
+       "text": "People who are important to me think I should use AI."
+      },
+      {
+       "id": "q14",
+       "code": "SF4",
+       "text": "In general, my department or university supports the use of AI."
+      }
+     ],
+     "title": "What people around you think",
+     "help": "Whether people who matter to you (instructors, classmates, family) think you should use AI."
+    },
+    {
+     "name": "Facilitating Conditions",
+     "questions": [
+      {
+       "id": "q15",
+       "code": "PBC2",
+       "text": "I have the resources necessary to use AI (for example, a device, internet access, and a free or paid subscription)."
+      },
+      {
+       "id": "q16",
+       "code": "PBC3",
+       "text": "I have the knowledge necessary to use AI."
+      }
+     ],
+     "title": "Resources and support",
+     "help": "Whether you have what you need to use AI: a device, internet, access, the know how, and support."
+    },
+    {
+     "name": "Self Efficacy",
+     "questions": [
+      {
+       "id": "q17",
+       "code": "SE1",
+       "text": "I could complete a task using AI even if there was no one around to tell me what to do."
+      },
+      {
+       "id": "q18",
+       "code": "SE4",
+       "text": "I could complete a task using AI if I could call someone for help when I got stuck."
+      },
+      {
+       "id": "q19",
+       "code": "SE6",
+       "text": "I could complete a task using AI if I had a lot of time to complete it."
+      }
+     ],
+     "title": "Confidence on your own",
+     "help": "How confident you are completing a task with AI by yourself, under different conditions."
+    },
+    {
+     "name": "Anxiety (reverse coded)",
+     "questions": [
+      {
+       "id": "q20",
+       "code": "ANX1",
+       "text": "I feel anxious about using AI."
+      },
+      {
+       "id": "q21",
+       "code": "ANX3",
+       "text": "I hesitate to use AI for fear of making mistakes."
+      },
+      {
+       "id": "q22",
+       "code": "ANX-add",
+       "text": "I hesitate to use AI for fear of getting recognized for using it."
+      },
+      {
+       "id": "q23",
+       "code": "ANX4",
+       "text": "AI is somewhat intimidating to me."
+      }
+     ],
+     "title": "Worries and hesitations",
+     "help": "Worries that hold you back: making mistakes, being noticed for using AI, or feeling intimidated."
+    },
+    {
+     "name": "Behavioral Intention",
+     "questions": [
+      {
+       "id": "q24",
+       "code": "BI1",
+       "text": "I intend to use AI in the coming term."
+      },
+      {
+       "id": "q25",
+       "code": "BI2",
+       "text": "I predict I will use AI in the coming term."
+      }
+     ],
+     "title": "Plans to keep using AI",
+     "help": "Whether you intend and expect to keep using AI in the coming term."
+    },
+    {
+     "name": "Trust",
+     "questions": [
+      {
+       "id": "q26",
+       "code": "TR2",
+       "text": "I trust the AI tools to be safe and reliable in tackling complex or difficult tasks."
+      },
+      {
+       "id": "q27",
+       "code": "TR3",
+       "text": "I would trust the problem solving and teaching skills of the AI tools more than the skill of the professors and/or teaching assistants."
+      },
+      {
+       "id": "q28",
+       "code": "TR4",
+       "text": "AI tools can be trusted to carry out tasks safely (without grave errors)."
+      }
+     ],
+     "title": "Trust in AI",
+     "help": "How much you trust AI to be safe, reliable, and capable for this work."
+    },
+    {
+     "name": "Task Technology Fit",
+     "questions": [
+      {
+       "id": "q29",
+       "code": "TTF1",
+       "text": "Using AI for data processing and coding fits well with my goals and needs."
+      },
+      {
+       "id": "q30",
+       "code": "TTF2",
+       "text": "Using AI fits well with the way I like to enhance my efficiency in data processing and coding."
+      },
+      {
+       "id": "q31",
+       "code": "TTF4",
+       "text": "Using AI fits well with all aspects of my data processing and coding tasks."
+      }
+     ],
+     "title": "Fit with how you work",
+     "help": "How well AI fits your goals and the way you actually study and work in this area."
+    }
+   ]
+  }
+ ]
+};
+(function () {
+  "use strict";
+
+  var S = window.SURVEY || { meta: {}, scale: { min: 1, max: 5, labels: {} }, intake: [], sections: [], rawSheets: [] };
+
+  var VARIANT = (window.SURVEY_VARIANT === "merged") ? "merged" : "standard";
+  var SECTIONS = (VARIANT === "merged") ? buildMergedSections(S.sections || []) : (S.sections || []);
+  var INTAKE = S.intake || [];
+  var HAS_INTAKE = INTAKE.length > 0;
+  var SCALE = S.scale || { min: 1, max: 5, labels: {} };
+  var MIN = SCALE.min || 1, MAX = SCALE.max || 5;
+  var FALLBACK_TOOLS = (S.meta && S.meta.aiTools) || [];
+  var MAX_TOOLS = 3;
+  var LS_KEY = "utaut_survey_answers_v8" + (VARIANT === "merged" ? "_alt" : "");
+
+  var answers = loadAnswers();
+  var STEPS = SECTIONS.map(function (sec, si) { return { index: si, si: si, sec: sec }; });
+  var currentStep = null;
+  var maxReached = 0;
+  var cueUpdate = null;
+  var CFG = window.SURVEY_CONFIG || {};
+  var GATED = !!(CFG.webAppUrl && CFG.requireToken !== false);
+  var SUBMIT_URL = CFG.webAppUrl || "";
+  var OPEN_SUBMIT = !!SUBMIT_URL && !GATED;
+  var TOKEN = null, ACCESS_OK = false, SUBMITTED = false, DEVICE_BLOCKED = false;
+  function submittedKey(t) { return "submitted::" + t; }
+
+  var DEVICE_KEY = "utaut_device_id", DONE_KEY = "utaut_submitted_v7";
+  function deviceId() {
+    var id; try { id = localStorage.getItem(DEVICE_KEY); } catch (e) {}
+    if (!id) {
+      id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID().replace(/-/g, "")
+        : (Date.now().toString(36) + Math.random().toString(36).slice(2, 12));
+      try { localStorage.setItem(DEVICE_KEY, id); } catch (e) {}
+    }
+    return id;
+  }
+  function deviceSubmitted() { try { return !!localStorage.getItem(DONE_KEY); } catch (e) { return false; } }
+  function markDeviceSubmitted() { try { localStorage.setItem(DONE_KEY, "1"); } catch (e) {} }
+
+  var ICONS = {
+    globe:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>',
+    bulb:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>',
+    puzzle:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4a2 2 0 1 1 4 0v2h3a1 1 0 0 1 1 1v3h-2a2 2 0 1 0 0 4h2v3a1 1 0 0 1-1 1h-3v-2a2 2 0 1 0-4 0v2H7a1 1 0 0 1-1-1v-3H4a2 2 0 1 1 0-4h2V7a1 1 0 0 1 1-1h3V4z"/></svg>',
+    doc:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>',
+    code:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg>',
+    check:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>',
+    slash:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M8.5 12h7"/></svg>',
+    chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
+    info:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></svg>',
+    lock:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+    layers:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5M3 16.5l9 5 9-5"/></svg>',
+    shield:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3 7.7-7 9-4-1.3-7-4.4-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>',
+    sheet:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 3v18"/></svg>'
+  };
+  function icon(name) { return ICONS[name] || ""; }
+
+  function buildExamples(text) {
+    var wrap = el("div", "ex-block");
+    wrap.appendChild(el("span", "ex-lead", "For example:"));
+    var ul = document.createElement("ul"); ul.className = "ex-list";
+    String(text || "").split(";").forEach(function (part) {
+      var t = part.trim().replace(/^and\s+/i, "").replace(/\s*\.+\s*$/, "");
+      if (t) { var li = document.createElement("li"); li.textContent = t; ul.appendChild(li); }
+    });
+    wrap.appendChild(ul);
+    return wrap;
+  }
+  function escClosePopup(e) { if (e.key === "Escape") closeInfoPopup(); }
+  function closeInfoPopup() { var b = document.querySelector(".info-pop-backdrop"); if (b) b.remove(); document.removeEventListener("keydown", escClosePopup); }
+  function showInfoPopup(title, body) {
+    closeInfoPopup();
+    var bd = el("div", "info-pop-backdrop");
+    var card = el("div", "info-pop");
+    card.appendChild(el("p", "info-pop-title", esc(title)));
+    if (body) card.appendChild(buildExamples(body));
+    var close = el("button", "btn btn-primary info-pop-close", "Got it"); close.type = "button";
+    close.addEventListener("click", closeInfoPopup);
+    card.appendChild(close);
+    bd.appendChild(card);
+    bd.addEventListener("click", function (e) { if (e.target === bd) closeInfoPopup(); });
+    document.body.appendChild(bd);
+    document.addEventListener("keydown", escClosePopup);
+    close.focus();
+  }
+  var SECTION_ICONS = {
+    general: "globe", learning_brainstorming: "bulb", problem_solving: "puzzle",
+    reporting_presentation_organization: "doc", data_processing_coding: "code",
+    applied: "layers"
+  };
+  function sectionIcon(sec) { return icon(SECTION_ICONS[sec.slug] || "globe"); }
+
+  function buildMergedSections(secs) {
+    if (!secs || secs.length <= 1) return secs || [];
+    var general = secs[0], applied = secs.slice(1), cols = [], tools = [];
+    applied.forEach(function (sec) {
+      (sec.columns || []).forEach(function (col) {
+        cols.push({ id: sec.slug + "__" + col.id, label: col.label, examples: col.examples, group: sec.name });
+      });
+      (sec.aiTools || []).forEach(function (t) { if (tools.indexOf(t) < 0) tools.push(t); });
+    });
+    var merged = {
+      id: "sec_applied", slug: "applied", name: "Applied AI Use",
+      description: "These four task areas are combined here. Tick each task you use AI for, then rate the statements. Tasks are grouped by area.",
+      aiTools: tools, columns: cols, groups: general.groups, grouped: true
+    };
+    return [general, merged];
+  }
+
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function keyOf(secId, qId, colId) { return secId + "::" + qId + "::" + colId; }
+  function useKey(sec, col) { return sec.id + "::" + col.id + "::__use"; }
+  function toolsKey(sec, col) { return sec.id + "::" + col.id + "::__tools"; }
+  function toolsModeKey(sec) { return sec.id + "::__toolsmode"; }
+  function sharedToolsKey(sec) { return sec.id + "::__sharedtools"; }
+  function bgKey(id) { return "bg::" + id; }
+  function idSafe(s) { return String(s).replace(/[^a-z0-9]/gi, "_"); }
+  function scaleLabel(n) { return (SCALE.labels && SCALE.labels[n]) ? SCALE.labels[n] : ("" + n); }
+  function loadAnswers() { try { return JSON.parse(localStorage.getItem(LS_KEY) || "{}") || {}; } catch (e) { return {}; } }
+  function saveAnswers() { try { localStorage.setItem(LS_KEY, JSON.stringify(answers)); } catch (e) {} }
+  function questionsOf(sec) { var o = []; (sec.groups || []).forEach(function (g) { (g.questions || []).forEach(function (q) { o.push(q); }); }); return o; }
+  function extrasOf(sec) { return sec.extra || []; }
+  function usageOf(sec, col) { return answers[useKey(sec, col)] || ""; }
+  function toolsMode(sec) { return answers[toolsModeKey(sec)] === "per" ? "per" : "shared"; }
+  function rawColTools(sec, col) { var t = answers[toolsKey(sec, col)]; return Array.isArray(t) ? t : []; }
+  function sharedToolsOf(sec) { var t = answers[sharedToolsKey(sec)]; return Array.isArray(t) ? t : []; }
+  // effective tools for a sub-area (used by completion + export): only a selected ("yes") task has
+  // tools, and in "shared" mode every selected task carries the section's one shared list.
+  function toolsOf(sec, col) { if (usageOf(sec, col) !== "yes") return []; return toolsMode(sec) === "per" ? rawColTools(sec, col) : sharedToolsOf(sec); }
+  function toolListFor(sec) { return (sec.aiTools && sec.aiTools.length) ? sec.aiTools : FALLBACK_TOOLS; }
+  function bgAnswered(q) { return answers[bgKey(q.id)] != null && answers[bgKey(q.id)] !== ""; }
+
+  // ---------- completion (per sub-area) ----------
+  function colCellsComplete(sec, col) { return questionsOf(sec).every(function (q) { return answers[keyOf(sec.id, q.id, col.id)] != null; }); }
+  function colResolved(sec, col) {
+    var u = usageOf(sec, col);
+    if (u === "no") return true;
+    if (u === "yes") return toolsOf(sec, col).length >= 1 && colCellsComplete(sec, col);
+    return false;
+  }
+  function extrasComplete(sec) { return extrasOf(sec).every(bgAnswered); }
+  function sectionComplete(sec) {
+    if (!extrasComplete(sec)) return false;
+    return (sec.columns || []).every(function (col) { return colResolved(sec, col); });
+  }
+  function aboutComplete() { return !HAS_INTAKE || INTAKE.every(bgAnswered); }
+  function completedSections() { var n = 0; SECTIONS.forEach(function (s) { if (sectionComplete(s)) n++; }); return n; }
+  function totalSteps() { return (HAS_INTAKE ? 1 : 0) + SECTIONS.length; }
+  function completedSteps() { return (HAS_INTAKE ? (aboutComplete() ? 1 : 0) : 0) + completedSections(); }
+  function firstIncompleteStep() { for (var i = 0; i < STEPS.length; i++) if (!sectionComplete(STEPS[i].sec)) return STEPS[i]; return null; }
+  // Sequential gating: a section is reachable only once About and every earlier section are done.
+  // Completed sections stay reachable (so the participant can go back and review/edit).
+  function frontierIndex() { var st = firstIncompleteStep(); return st ? st.index : STEPS.length; }
+  function stepReachable(step) { return aboutComplete() && step.index <= frontierIndex(); }
+  function startHash() { if (HAS_INTAKE && !aboutComplete()) return "#about"; var st = firstIncompleteStep(); return st ? stepHash(st) : (STEPS[0] ? stepHash(STEPS[0]) : "#about"); }
+
+  // ---------- routing ----------
+  function stepHash(step) { return "#" + step.sec.slug; }
+  function findStep(slug) { for (var i = 0; i < STEPS.length; i++) if (STEPS[i].sec.slug === slug) return STEPS[i]; return null; }
+  function parseHash() {
+    var h = (location.hash || "").replace(/^#/, "");
+    if (!h || h === "welcome") return { view: "welcome" };
+    if (h === "about") return { view: "about" };
+    if (h === "done") return { view: "done" };
+    var step = findStep(h.split("/")[0]);
+    return step ? { view: "step", step: step } : { view: "welcome" };
+  }
+  function go(hash) { if (location.hash === hash) render(); else location.hash = hash; }
+
+  // ---------- meta / progress ----------
+  function applyMeta() { var t = (S.meta && S.meta.title) || "Survey"; document.getElementById("brandTitle").textContent = t; document.title = t; }
+  // Position-based progress: the bar reflects how far you have advanced (each Continue moves it
+  // one step), not how much you have filled in. It never regresses (holds the furthest page
+  // reached this session). About + 5 sections = `total`; Welcome/About = 0, section i = i+1,
+  // Done = total (100%).
+  function routeReached(route) {
+    var total = totalSteps();
+    if (route.view === "step") return route.step.index + 1;
+    if (route.view === "done") return completedSteps() === total ? total : maxReached;
+    return 0; // welcome / about
+  }
+  function updateProgress() {
+    var total = totalSteps();
+    var reached = routeReached(parseHash());
+    if (reached > maxReached) maxReached = reached;
+    var shown = Math.min(maxReached, total);
+    document.getElementById("progressFill").style.width = (total ? Math.round(shown / total * 100) : 0) + "%";
+    document.getElementById("progressText").textContent = shown + " / " + total;
+  }
+  function refreshStepper() {
+    var nav = document.getElementById("stepper");
+    if (!nav || nav.hidden) return;
+    // Re-render so done/locked state + icons stay consistent (e.g. completing the current
+    // section unlocks the next). Cheap, and it does not touch the matrix, so radio focus is kept.
+    var route = parseHash();
+    var activeKey = route.view === "about" ? "about" : (route.view === "step" ? route.step.index : null);
+    renderStepper(activeKey);
+  }
+
+  // ---------- stepper ----------
+  function stepperPill(opts) {
+    var step = el("div", "step" + (opts.active ? " active" : "") + (opts.done ? " done" : "") + (opts.locked ? " locked" : ""));
+    step.setAttribute("data-kind", opts.kind);
+    if (opts.kind === "section") step.setAttribute("data-si", opts.si);
+    var btn = el("button", "step-btn"); btn.type = "button";
+    var dotHtml = opts.done && !opts.active ? "✓" : (opts.locked ? icon("lock") : opts.dot);
+    btn.appendChild(el("span", "step-dot", dotHtml));
+    btn.appendChild(el("span", "step-label", esc(opts.label)));
+    if (opts.locked) btn.setAttribute("aria-disabled", "true");
+    btn.addEventListener("click", function () {
+      if (opts.locked) { showToast("Please finish the current section before moving on.", true); return; }
+      opts.onClick();
+    });
+    step.appendChild(btn); step.appendChild(el("span", "step-line"));
+    return step;
+  }
+  function renderStepper(activeKey) {
+    var nav = document.getElementById("stepper");
+    if (activeKey == null) { nav.hidden = true; nav.innerHTML = ""; return; }
+    nav.hidden = false; nav.innerHTML = "";
+    var inner = el("div", "stepper-inner");
+    if (HAS_INTAKE) inner.appendChild(stepperPill({ kind: "about", dot: "i", label: "About you", active: activeKey === "about", done: aboutComplete(), onClick: function () { go("#about"); } }));
+    SECTIONS.forEach(function (sec, si) { inner.appendChild(stepperPill({ kind: "section", si: si, dot: "" + (si + 1), label: sec.name, active: activeKey === si, done: sectionComplete(sec), locked: activeKey !== si && !stepReachable(STEPS[si]), onClick: function () { go("#" + sec.slug); } })); });
+    nav.appendChild(inner);
+  }
+
+  // ---------- shared bits ----------
+  function scaleStrip() {
+    var bar = el("div", "scalebar");
+    bar.appendChild(el("span", "scalebar-title", "Scale"));
+    for (var n = MIN; n <= MAX; n++) {
+      var sb = el("span", "sb"); sb.setAttribute("data-n", n);
+      sb.appendChild(el("span", "sb-num", "" + n)); sb.appendChild(el("span", null, esc(scaleLabel(n))));
+      bar.appendChild(sb);
+    }
+    return bar;
+  }
+  // a single-select question (pills or dropdown), answer stored under bg::id
+  function bgBlock(q) {
+    var block = el("div", "intake-block"); block.setAttribute("data-bg", q.id);
+    block.appendChild(el("p", "intake-q", esc(q.label)));
+    if (q.type === "select") {
+      var sel = document.createElement("select"); sel.className = "intake-select";
+      var ph = document.createElement("option"); ph.value = ""; ph.textContent = "Select your answer"; sel.appendChild(ph);
+      (q.options || []).forEach(function (opt) { var o = document.createElement("option"); o.value = opt; o.textContent = opt; if (answers[bgKey(q.id)] === opt) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener("change", function () { answers[bgKey(q.id)] = sel.value; saveAnswers(); block.classList.remove("missing"); updateProgress(); refreshStepper(); });
+      block.appendChild(sel);
+    } else {
+      var row = el("div", "opt-row");
+      (q.options || []).forEach(function (opt) {
+        var b = el("button", "opt" + (answers[bgKey(q.id)] === opt ? " active" : "")); b.type = "button"; b.textContent = opt;
+        b.addEventListener("click", function () { answers[bgKey(q.id)] = opt; saveAnswers(); row.querySelectorAll(".opt").forEach(function (x) { x.classList.toggle("active", x.textContent === opt); }); block.classList.remove("missing"); updateProgress(); refreshStepper(); });
+        row.appendChild(b);
+      });
+      block.appendChild(row);
+    }
+    return block;
+  }
+  function flagBg(ids, msg) {
+    var first = null;
+    ids.forEach(function (id) { var b = document.querySelector('.intake-block[data-bg="' + id + '"]'); if (b && (answers[bgKey(id)] == null || answers[bgKey(id)] === "")) { b.classList.add("missing"); if (!first) first = b; } });
+    showToast(msg, true);
+    if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+  function buildNumberScale(secId, qId, colId) {
+    var wrap = el("div", "numscale"); wrap.setAttribute("role", "radiogroup");
+    var name = keyOf(secId, qId, colId), saved = answers[name];
+    for (var n = MIN; n <= MAX; n++) {
+      var ns = el("div", "ns");
+      var rid = "r_" + idSafe(name) + "_" + n;
+      var input = document.createElement("input");
+      input.type = "radio"; input.name = name; input.id = rid; input.value = "" + n;
+      if (saved != null && +saved === n) input.checked = true;
+      input.addEventListener("change", onCellChange);
+      // Likert: show the number 1..5; the scale word stays in the top legend + on hover/screen reader
+      var label = el("label", null, "" + n);
+      label.setAttribute("for", rid); label.title = n + " · " + scaleLabel(n); label.setAttribute("aria-label", n + " " + scaleLabel(n));
+      ns.appendChild(input); ns.appendChild(label); wrap.appendChild(ns);
+    }
+    return wrap;
+  }
+
+  // ---------- views ----------
+  function clearView() { var v = document.getElementById("view"); v.innerHTML = ""; return v; }
+  function topFocus() { window.scrollTo(0, 0); var v = document.getElementById("view"); if (v && v.focus) v.focus({ preventScroll: true }); }
+
+  function renderWelcome() {
+    renderStepper(null);
+    var v = clearView();
+    var page = el("div", "page welcome");
+    var hero = el("div", "hero-card");
+    var logo = el("img", "hero-logo"); logo.src = "data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22471%22%0Aheight%3D%22398%22%20stroke%3D%22%23C00%22%20stroke-width%3D%224%22%3E%0A%3Cpath%20fill%3D%22%23C00%22%0Ad%3D%22m200%2C8a186%2C186%200%201%2C0%202%2C0zm36%2C368a186%2C186%200%200%2C1%200-364%22%2F%3E%0A%3Cpath%20fill%3D%22none%22%20d%3D%22m272%2C8a186%2C186%200%201%2C0%202%2C0z%22%2F%3E%0A%3C%2Fsvg%3E"; logo.alt = "METU"; logo.width = 471; logo.height = 398;
+    hero.appendChild(logo);
+    hero.appendChild(el("p", "eyebrow", esc((S.meta && S.meta.org) || "Academic Research Survey")));
+    hero.appendChild(el("h1", null, esc((S.meta && S.meta.title) || "AI Use Survey")));
+    if (S.meta && S.meta.intro) hero.appendChild(el("p", "welcome-sub", esc(S.meta.intro)));
+    if (S.meta && S.meta.howlong) hero.appendChild(el("p", "welcome-sub small", esc(S.meta.howlong)));
+    if (S.meta && S.meta.note) hero.appendChild(el("p", "consent", esc(S.meta.note)));
+    // privacy / anonymity reassurance with icons (shown up front)
+    var priv = el("div", "privacy");
+    priv.appendChild(el("p", "privacy-head", "Your privacy"));
+    [["lock", "Fully anonymous. We never ask for your name, email or student ID, and there is no login."],
+     ["sheet", "Your answers are saved to a private Google Sheet that only the research team can see, used only for this academic study."],
+     ["shield", "No tracking and no personal data. Your responses cannot be traced back to you."]
+    ].forEach(function (r) {
+      var row = el("div", "privacy-row");
+      row.appendChild(el("span", "privacy-ic", icon(r[0])));
+      row.appendChild(el("span", "privacy-tx", esc(r[1])));
+      priv.appendChild(row);
+    });
+    hero.appendChild(priv);
+    page.appendChild(hero);
+
+    var actions = el("div", "welcome-actions");
+    var begin = el("button", "btn btn-primary btn-lg", (completedSteps() > 0 ? "Continue" : "Begin") + " ›"); begin.type = "button";
+    begin.addEventListener("click", function () { go(startHash()); });
+    actions.appendChild(begin);
+    actions.appendChild(el("span", "save-hint", "Your answers are saved automatically in this browser."));
+    var alt = document.createElement("a"); alt.className = "variant-link";
+    alt.href = (VARIANT === "merged") ? "index.html" : "alternative.html";
+    alt.textContent = (VARIANT === "merged") ? "Switch to the standard layout" : "Try the alternative (combined) layout";
+    actions.appendChild(alt);
+    page.appendChild(actions);
+    v.appendChild(page); topFocus();
+  }
+
+  function renderAbout() {
+    renderStepper("about");
+    var v = clearView();
+    var page = el("div", "page about");
+    var head = el("div", "gp-head");
+    head.appendChild(el("div", "gp-icon info", icon("info")));
+    var hbox = el("div", null);
+    hbox.appendChild(el("p", "eyebrow", "Background"));
+    hbox.appendChild(el("h2", null, "About you"));
+    hbox.appendChild(el("p", "gp-desc", "Used only to describe who took part in this study."));
+    head.appendChild(hbox); page.appendChild(head);
+
+    var card = el("div", "card intake");
+    INTAKE.forEach(function (q) { card.appendChild(bgBlock(q)); });
+    page.appendChild(card);
+
+    var nav = el("div", "pagenav");
+    var back = el("button", "btn btn-ghost", "‹ Back"); back.type = "button";
+    back.addEventListener("click", function () { go("#welcome"); });
+    var next = el("button", "btn btn-primary", "Continue ›"); next.type = "button";
+    next.addEventListener("click", function () { if (!aboutComplete()) { flagBg(INTAKE.map(function (q) { return q.id; }), "Please answer to continue."); return; } go(STEPS[0] ? stepHash(STEPS[0]) : "#done"); });
+    nav.appendChild(back); nav.appendChild(el("div", "spacer")); nav.appendChild(next);
+    page.appendChild(nav);
+    v.appendChild(page); topFocus();
+  }
+
+  function renderStep(step) {
+    currentStep = step;
+    renderStepper(step.si);
+    var v = clearView();
+    var sec = step.sec;
+    var page = el("div", "page group-page");
+
+    var head = el("div", "gp-head");
+    head.appendChild(el("div", "gp-icon", sectionIcon(sec)));
+    var hbox = el("div", null);
+    hbox.appendChild(el("p", "eyebrow", "About this section"));
+    hbox.appendChild(el("h2", null, esc(sec.name)));
+    if (sec.description) hbox.appendChild(el("p", "gp-desc", esc(sec.description)));
+    head.appendChild(hbox); page.appendChild(head);
+
+    page.appendChild(scaleStrip());
+
+    if (extrasOf(sec).length) {
+      var ec = el("div", "card intake extra");
+      ec.appendChild(el("p", "extra-title", "Your AI use overall"));
+      extrasOf(sec).forEach(function (q) { ec.appendChild(bgBlock(q)); });
+      page.appendChild(ec);
+    }
+
+    page.appendChild(el("div", "setup", ""));
+    page.appendChild(el("div", "matrix-host", ""));
+
+    var nav = el("div", "pagenav");
+    var back = el("button", "btn btn-ghost", "‹ Back"); back.type = "button";
+    back.addEventListener("click", function () { go(step.index === 0 ? (HAS_INTAKE ? "#about" : "#welcome") : stepHash(STEPS[step.index - 1])); });
+    var isLast = step.index === STEPS.length - 1;
+    var next = el("button", "btn btn-primary", isLast ? "Finish ›" : "Next ›"); next.type = "button";
+    next.addEventListener("click", onNext);
+    nav.appendChild(back); nav.appendChild(el("div", "spacer")); nav.appendChild(next);
+    page.appendChild(nav);
+
+    v.appendChild(page);
+    renderSetup(sec); renderMatrix(sec);
+    topFocus();
+  }
+
+  // ---------- usage picker (one combined question) + tools block + rating matrix ----------
+  function setupHostEl() { return document.querySelector(".setup"); }
+  function matrixHostEl() { return document.querySelector(".matrix-host"); }
+  function rerenderSetup() { if (currentStep && setupHostEl()) renderSetup(currentStep.sec); }
+  function rerenderSection() { if (currentStep) { renderSetup(currentStep.sec); syncMatrix(currentStep.sec); } }
+  // In-place matrix update on a usage toggle: flip each column's locked/active state without
+  // rebuilding the ~7500-node table (a full rebuild made every checkbox tap janky on mobile).
+  function syncMatrix(sec) {
+    var host = matrixHostEl(); if (!host) return;
+    var table = host.querySelector("table.matrix");
+    if (!table) { renderMatrix(sec); return; }
+    var cols = sec.columns || [];
+    var heads = table.querySelectorAll("thead th.colhead");
+    var rows = table.querySelectorAll("tbody tr.qrow");
+    cols.forEach(function (col, ci) {
+      var active = usageOf(sec, col) === "yes";
+      var th = heads[ci];
+      if (th) {
+        th.classList.toggle("locked", !active);
+        var note = th.querySelector(".colhead-note");
+        if (active) { if (note && note.parentNode) note.parentNode.removeChild(note); }
+        else {
+          var txt = usageOf(sec, col) === "no" ? "Skipped" : "Select above";
+          if (!note) { note = el("span", "colhead-note", ""); th.appendChild(note); }
+          note.textContent = txt;
+        }
+      }
+      for (var r = 0; r < rows.length; r++) {
+        var td = rows[r].children[ci + 1]; // child 0 is the sticky statement cell
+        if (!td || td.classList.contains("locked") === !active) continue;
+        td.classList.toggle("locked", !active);
+        var inputs = td.querySelectorAll(".ns input");
+        for (var j = 0; j < inputs.length; j++) inputs[j].disabled = !active;
+      }
+    });
+  }
+
+  // one combined question per section: which tasks do you use AI for? (multi-select)
+  function renderSetup(sec) {
+    var host = setupHostEl(); if (!host) return;
+    host.innerHTML = "";
+    var block = el("div", "usagepicker");
+    var q = el("p", "usagepicker-q", "Which of these tasks do you use AI for?");
+    q.appendChild(el("span", "usagepicker-hint", "Select all that apply. Leave a task unticked if you do not use AI for it."));
+    block.appendChild(q);
+    var list = el("div", "usage-list" + (sec.grouped ? " grouped" : ""));
+    if (sec.grouped) {
+      var order = [], byGroup = {};
+      (sec.columns || []).forEach(function (col) { if (!byGroup[col.group]) { byGroup[col.group] = []; order.push(col.group); } byGroup[col.group].push(col); });
+      order.forEach(function (gname, gi) {
+        list.appendChild(el("div", "usage-grouphdr cgrp-" + (gi % 6), esc(gname)));
+        byGroup[gname].forEach(function (col) { list.appendChild(renderUsageItem(sec, col)); });
+      });
+    } else {
+      (sec.columns || []).forEach(function (col) { list.appendChild(renderUsageItem(sec, col)); });
+    }
+    list.appendChild(renderNoneItem(sec));
+    block.appendChild(list);
+    host.appendChild(block);
+    var tb = renderToolsBlock(sec); if (tb) host.appendChild(tb);
+  }
+  function renderUsageItem(sec, col) {
+    var on = usageOf(sec, col) === "yes", done = on && colResolved(sec, col);
+    var item = el("div", "usage-item" + (on ? " on" : "") + (done ? " done" : "")); item.setAttribute("data-col", col.id);
+    var toggle = el("button", "usage-toggle"); toggle.type = "button"; toggle.setAttribute("aria-pressed", on ? "true" : "false");
+    toggle.appendChild(el("span", "usage-check" + (on ? " on" : ""), on ? icon("check") : ""));
+    var body = el("span", "usage-body");
+    var nameRow = el("span", "usage-namerow");
+    nameRow.appendChild(el("span", "usage-name", esc(col.label)));
+    if (done) nameRow.appendChild(el("span", "usage-badge done", icon("check") + "<span>Done</span>"));
+    body.appendChild(nameRow);
+    toggle.appendChild(body);
+    toggle.addEventListener("click", function () { toggleTaskUsed(sec, col); });
+    item.appendChild(toggle);
+    // expandable "what does this cover?" details, OUTSIDE the toggle button (a <details> inside a
+    // <button> is invalid). Collapsed by default to keep the list tidy.
+    if (col.examples) {
+      var det = document.createElement("details"); det.className = "usage-ex-det"; det.open = true;
+      var sum = document.createElement("summary"); sum.className = "usage-ex-sum"; sum.textContent = "What does this cover?";
+      det.appendChild(sum);
+      det.appendChild(buildExamples(col.examples));
+      item.appendChild(det);
+    }
+    return item;
+  }
+  function noneSelected(sec) {
+    var cols = sec.columns || [];
+    return cols.length > 0 && cols.every(function (c) { return usageOf(sec, c) === "no"; });
+  }
+  function renderNoneItem(sec) {
+    var on = noneSelected(sec);
+    var item = el("div", "usage-item none" + (on ? " on" : ""));
+    var toggle = el("button", "usage-toggle"); toggle.type = "button"; toggle.setAttribute("aria-pressed", on ? "true" : "false");
+    toggle.appendChild(el("span", "usage-check" + (on ? " on" : ""), on ? icon("check") : ""));
+    var body = el("span", "usage-body");
+    body.appendChild(el("span", "usage-name", "I don’t use AI for any of these"));
+    toggle.appendChild(body);
+    toggle.addEventListener("click", function () { setNoneUsed(sec); });
+    item.appendChild(toggle);
+    return item;
+  }
+  function buildToolPicker(sec, opts) {
+    var wrap = el("div", "tools");
+    wrap.appendChild(el("p", "tools-instruction", opts.instruction));
+    var chips = el("div", "toolchips");
+    var tools = opts.tools;
+    var list = toolListFor(sec).slice();
+    tools.forEach(function (t) { if (list.indexOf(t) < 0) list.push(t); });
+    list.forEach(function (name) {
+      var rank = tools.indexOf(name);
+      var chip = el("button", "chip" + (rank >= 0 ? " selected" : "")); chip.type = "button";
+      if (rank >= 0) chip.appendChild(el("span", "rank", "" + (rank + 1)));
+      chip.appendChild(el("span", "chip-label", esc(name)));
+      chip.addEventListener("click", function () { opts.onToggle(name); });
+      chips.appendChild(chip);
+    });
+    var other = el("button", "chip other"); other.type = "button"; other.textContent = "+ Other";
+    other.addEventListener("click", function () { opts.onOther(); });
+    chips.appendChild(other);
+    wrap.appendChild(chips);
+    wrap.appendChild(el("p", "tools-hint", "Tap to rank 1, 2, 3 · tap again to remove · selected " + tools.length + "/" + MAX_TOOLS));
+    return wrap;
+  }
+  // tools block below the checklist: one combined picker (Same for all) or one per task (Different)
+  function renderToolsBlock(sec) {
+    var sel = (sec.columns || []).filter(function (c) { return usageOf(sec, c) === "yes"; });
+    if (!sel.length) return null;
+    var mode = toolsMode(sec);
+    var block = el("div", "toolsblock");
+    var head = el("div", "toolsblock-head");
+    head.appendChild(el("p", "toolsblock-q", "Which AI tools do you use?"));
+    if (sel.length >= 2) {
+      var seg = el("div", "segmented toolsmode");
+      var sameB = el("button", "seg-opt" + (mode !== "per" ? " on" : "")); sameB.type = "button"; sameB.innerHTML = "<span>Same for all</span>";
+      var diffB = el("button", "seg-opt" + (mode === "per" ? " on" : "")); diffB.type = "button"; diffB.innerHTML = "<span>Different per task</span>";
+      sameB.addEventListener("click", function () { setToolsMode(sec, "shared"); });
+      diffB.addEventListener("click", function () { setToolsMode(sec, "per"); });
+      seg.appendChild(sameB); seg.appendChild(diffB); head.appendChild(seg);
+    }
+    block.appendChild(head);
+    if (mode === "per") {
+      sel.forEach(function (col) {
+        var grp = el("div", "toolgroup"); grp.setAttribute("data-col", col.id);
+        grp.appendChild(el("p", "toolgroup-name", esc(col.label)));
+        grp.appendChild(buildToolPicker(sec, {
+          tools: rawColTools(sec, col),
+          instruction: "Select the tools you use most, in order. Tap up to " + MAX_TOOLS + ".",
+          onToggle: function (name) { changeTools(function () { return rawColTools(sec, col); }, function (t) { answers[toolsKey(sec, col)] = t; }, name); },
+          onOther: function () { addOtherTool(function () { return rawColTools(sec, col); }, function (t) { answers[toolsKey(sec, col)] = t; }); }
+        }));
+        block.appendChild(grp);
+      });
+    } else {
+      block.appendChild(buildToolPicker(sec, {
+        tools: sharedToolsOf(sec),
+        instruction: "Pick the tools you use most, in order. They apply to every task you selected. Tap up to " + MAX_TOOLS + ".",
+        onToggle: function (name) { changeTools(function () { return sharedToolsOf(sec); }, function (t) { answers[sharedToolsKey(sec)] = t; }, name); },
+        onOther: function () { addOtherTool(function () { return sharedToolsOf(sec); }, function (t) { answers[sharedToolsKey(sec)] = t; }); }
+      }));
+    }
+    return block;
+  }
+  function setToolsMode(sec, m) { answers[toolsModeKey(sec)] = m; saveAnswers(); rerenderSetup(); updateProgress(); refreshStepper(); }
+  // matrix: rows = statements, columns = ALL sub-areas; columns not marked "Yes" are locked/greyed
+  function renderMatrix(sec) {
+    var host = matrixHostEl(); if (!host) return;
+    host.innerHTML = ""; cueUpdate = null;
+    var cols = sec.columns || [];
+    if (!cols.length) return;
+    host.appendChild(el("p", "matrix-lead", "Rate each statement (1 = " + esc(scaleLabel(MIN)) + ", " + MAX + " = " + esc(scaleLabel(MAX)) + "). Greyed columns are tasks you have not selected above."));
+    // category colour-coding (grouped/merged matrix): each category gets an index used for a
+    // pastel band + a coloured separator at the column where a new category begins.
+    var groupOrder = [];
+    cols.forEach(function (c) { if (c.group && groupOrder.indexOf(c.group) < 0) groupOrder.push(c.group); });
+    // colour index: grouped (v2) shares a colour per category; ungrouped (v1) colours each column
+    // by its position. gstart marks where a new category begins (grouped only).
+    (function () { var prev = null; cols.forEach(function (c, i) { c.__gi = (c.group ? groupOrder.indexOf(c.group) : i) % 6; c.__gstart = !!(c.group && c.group !== prev); prev = c.group || null; }); })();
+    function grpCls(col) { return " cgrp-" + col.__gi + (col.__gstart ? " gstart" : ""); }
+    var wrap = el("div", "matrix-wrap");
+    var scroll = el("div", "matrix-scroll");
+    var table = el("table", "matrix" + (sec.grouped ? " grouped" : ""));
+    var thead = document.createElement("thead");
+    function colHeadCell(col) {
+      var u = usageOf(sec, col), active = u === "yes";
+      var th = el("th", "colhead" + (active ? "" : " locked") + grpCls(col));
+      th.appendChild(el("span", "colhead-label", esc(col.label)));
+      if (col.examples) {
+        var hb = el("button", "colhelp", "?"); hb.type = "button"; hb.setAttribute("aria-label", "What " + col.label + " covers");
+        hb.addEventListener("click", function (e) { e.stopPropagation(); showInfoPopup(col.label, col.examples); });
+        th.appendChild(hb);
+      }
+      if (!active) th.appendChild(el("span", "colhead-note", u === "no" ? "Skipped" : "Select above"));
+      return th;
+    }
+    if (sec.grouped) {
+      // two-level header: category band (row 1, spanning its sub-areas) + sub-area labels (row 2)
+      var order = [], cnt = {};
+      cols.forEach(function (c) { if (cnt[c.group] === undefined) { order.push(c.group); cnt[c.group] = 0; } cnt[c.group]++; });
+      var gtr = document.createElement("tr"); gtr.className = "grouprow";
+      var corner = el("th", "corner", "Statement"); corner.rowSpan = 2; gtr.appendChild(corner);
+      order.forEach(function (gname) {
+        var gth = el("th", "grouphead cgrp-" + (groupOrder.indexOf(gname) % 6)); gth.colSpan = cnt[gname];
+        gth.appendChild(el("span", "grouphead-label", esc(gname)));
+        gtr.appendChild(gth);
+      });
+      thead.appendChild(gtr);
+      var str = document.createElement("tr");
+      cols.forEach(function (col) { str.appendChild(colHeadCell(col)); });
+      thead.appendChild(str);
+    } else {
+      var tr = document.createElement("tr");
+      tr.appendChild(el("th", "corner", "Statement"));
+      cols.forEach(function (col) { tr.appendChild(colHeadCell(col)); });
+      thead.appendChild(tr);
+    }
+    table.appendChild(thead);
+    var tbody = document.createElement("tbody");
+    // flat list of statements (construct group titles/explanations intentionally not shown)
+    (sec.groups || []).forEach(function (g) {
+      (g.questions || []).forEach(function (q) {
+        var rtr = el("tr", "qrow");
+        var qcell = el("th", "qcell");
+        qcell.appendChild(el("span", "qtext", esc(q.text || "")));
+        rtr.appendChild(qcell);
+        cols.forEach(function (col) {
+          var active = usageOf(sec, col) === "yes";
+          var td = el("td", "answer" + (active ? "" : " locked") + grpCls(col)); td.setAttribute("data-key", keyOf(sec.id, q.id, col.id));
+          var ns = buildNumberScale(sec.id, q.id, col.id);
+          if (!active) ns.querySelectorAll("input").forEach(function (inp) { inp.disabled = true; });
+          td.appendChild(ns);
+          rtr.appendChild(td);
+        });
+        tbody.appendChild(rtr);
+      });
+    });
+    table.appendChild(tbody); scroll.appendChild(table); wrap.appendChild(scroll);
+    var cue = el("div", "scroll-cue"); cue.innerHTML = '<span class="cue-pill">Scroll&nbsp;→</span>'; cue.style.display = "none";
+    wrap.appendChild(cue); host.appendChild(wrap);
+    setupScrollCue(scroll, cue);
+  }
+  function setupScrollCue(scrollEl, cueEl) {
+    cueUpdate = function () {
+      var max = scrollEl.scrollWidth - scrollEl.clientWidth;
+      var atEnd = scrollEl.scrollLeft >= max - 4;
+      cueEl.style.display = (max > 6 && !atEnd) ? "flex" : "none";
+    };
+    scrollEl.addEventListener("scroll", cueUpdate, { passive: true });
+    cueUpdate(); setTimeout(cueUpdate, 60);
+  }
+
+  // ---------- interactions ----------
+  // first interaction "activates" the section: any untouched task becomes "no" (single-question
+  // semantics — an unticked task means "I do not use AI for it").
+  function baselineSection(sec) { (sec.columns || []).forEach(function (c) { if (!usageOf(sec, c)) answers[useKey(sec, c)] = "no"; }); }
+  function clearColTools(sec, col) { delete answers[toolsKey(sec, col)]; }
+  function toggleTaskUsed(sec, col) {
+    var cur = usageOf(sec, col);
+    baselineSection(sec);
+    if (cur === "yes") { answers[useKey(sec, col)] = "no"; clearColTools(sec, col); }
+    else { answers[useKey(sec, col)] = "yes"; }
+    saveAnswers(); rerenderSection(); updateProgress(); refreshStepper();
+  }
+  function setNoneUsed(sec) {
+    (sec.columns || []).forEach(function (c) { answers[useKey(sec, c)] = "no"; clearColTools(sec, c); });
+    saveAnswers(); rerenderSection(); updateProgress(); refreshStepper();
+  }
+  // generic tool toggle/add, parameterized by where the list is read/written (per-col or shared)
+  function changeTools(get, set, name) {
+    var t = get().slice(), i = t.indexOf(name);
+    if (i >= 0) t.splice(i, 1);
+    else if (t.length < MAX_TOOLS) t.push(name);
+    else { showToast("You can rank up to " + MAX_TOOLS + " tools.", true); return; }
+    set(t); saveAnswers(); rerenderSetup(); updateProgress(); refreshStepper();
+  }
+  function addOtherTool(get, set) {
+    var t = get().slice();
+    if (t.length >= MAX_TOOLS) { showToast("You can rank up to " + MAX_TOOLS + " tools.", true); return; }
+    var name = (window.prompt("Add another AI tool:") || "").trim();
+    if (!name || t.indexOf(name) >= 0) return;
+    t.push(name); set(t); saveAnswers(); rerenderSetup(); updateProgress(); refreshStepper();
+  }
+  function onCellChange(e) {
+    answers[e.target.name] = +e.target.value; saveAnswers();
+    var td = e.target.closest("td.answer"); if (td) td.classList.remove("missing");
+    updateProgress(); refreshStepper(); updateSetupBadges();
+  }
+  // light refresh of usage-row "Done" state without touching the matrix inputs (keeps radio focus)
+  function updateSetupBadges() {
+    if (!currentStep) return; var sec = currentStep.sec;
+    document.querySelectorAll(".setup .usage-item").forEach(function (itemEl) {
+      var colId = itemEl.getAttribute("data-col"); if (!colId) return;
+      var col = (sec.columns || []).filter(function (c) { return c.id === colId; })[0]; if (!col) return;
+      var on = usageOf(sec, col) === "yes", done = on && colResolved(sec, col);
+      itemEl.className = "usage-item" + (on ? " on" : "") + (done ? " done" : "");
+      var nameRow = itemEl.querySelector(".usage-namerow"); if (!nameRow) return;
+      var badge = nameRow.querySelector(".usage-badge");
+      if (done && !badge) nameRow.appendChild(el("span", "usage-badge done", icon("check") + "<span>Done</span>"));
+      else if (!done && badge) badge.parentNode.removeChild(badge);
+    });
+  }
+  function onNext() {
+    var sec = currentStep.sec, step = currentStep;
+    if (extrasOf(sec).length && !extrasComplete(sec)) { flagBg(extrasOf(sec).map(function (q) { return q.id; }), "Please answer the questions at the top of this section."); return; }
+    var cols = sec.columns || [], host = setupHostEl();
+    var answered = cols.every(function (c) { return usageOf(sec, c) !== ""; });
+    if (cols.length && !answered) {
+      showToast("Please choose which tasks you use AI for, or select “I don’t use AI for any of these”.", true);
+      var pick = host && host.querySelector(".usagepicker");
+      if (pick) { pick.classList.add("needs"); setTimeout(function () { pick.classList.remove("needs"); }, 400); pick.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      return;
+    }
+    var per = toolsMode(sec) === "per";
+    for (var i = 0; i < cols.length; i++) {
+      var col = cols[i];
+      if (colResolved(sec, col)) continue;
+      if (toolsOf(sec, col).length === 0) {
+        showToast(per ? "Please select at least one AI tool for “" + col.label + "”." : "Please select at least one AI tool for the tasks you picked.", true);
+        var target = host && (per ? host.querySelector('.toolgroup[data-col="' + col.id + '"]') : host.querySelector(".toolsblock"));
+        if (target) { var tc = target.querySelector(".toolchips"); if (tc) tc.classList.add("needs"); target.scrollIntoView({ behavior: "smooth", block: "center" }); }
+        return;
+      }
+      flagFirstMissingCell(sec, col);
+      showToast("Please rate every statement for “" + col.label + "”.", true);
+      return;
+    }
+    var isLast = step.index === STEPS.length - 1;
+    go(isLast ? "#done" : stepHash(STEPS[step.index + 1]));
+  }
+  function flagFirstMissingCell(sec, col) {
+    var first = null;
+    questionsOf(sec).forEach(function (q) {
+      var key = keyOf(sec.id, q.id, col.id);
+      if (answers[key] == null) {
+        var td = document.querySelector('td.answer[data-key="' + key + '"]');
+        if (td) { td.classList.add("missing"); if (!first) first = td; }
+      }
+    });
+    if (first) setTimeout(function () { first.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" }); }, 60);
+  }
+
+  function alreadySubmitted() { return SUBMITTED || (TOKEN && (function () { try { return !!localStorage.getItem(submittedKey(TOKEN)); } catch (e) { return false; } })()); }
+
+  function renderDone() {
+    cueUpdate = null; renderStepper(null);
+    var v = clearView();
+    var total = totalSteps(), done = completedSteps(), remaining = total - done;
+
+    // not finished yet
+    if (remaining) {
+      var page = el("div", "page done incomplete");
+      page.appendChild(el("div", "check", "!"));
+      page.appendChild(el("h2", null, "Almost there"));
+      page.appendChild(el("p", null, done + " of " + total + " steps completed. " + remaining + " still need attention."));
+      var a0 = el("div", "done-actions");
+      var fix = el("button", "btn btn-primary", "Go to first unfinished"); fix.type = "button";
+      fix.addEventListener("click", function () { if (HAS_INTAKE && !aboutComplete()) { go("#about"); return; } var st = firstIncompleteStep(); if (st) go(stepHash(st)); });
+      a0.appendChild(fix); page.appendChild(a0);
+      v.appendChild(page); topFocus(); return;
+    }
+
+    // finished + delivery configured + not yet sent -> submit step
+    if (GATED && !alreadySubmitted()) {
+      var p1 = el("div", "page done");
+      p1.appendChild(el("div", "check", "✓"));
+      p1.appendChild(el("h2", null, "Ready to submit"));
+      p1.appendChild(el("p", null, "You have completed every section. Submit your responses to record them. This can be done once."));
+      var a1 = el("div", "done-actions");
+      var sub = el("button", "btn btn-primary", "Submit responses"); sub.type = "button";
+      sub.addEventListener("click", function () {
+        sub.disabled = true; sub.textContent = "Submitting…";
+        submitResponses(function (ok) {
+          if (ok) { SUBMITTED = true; try { localStorage.setItem(submittedKey(TOKEN), "1"); } catch (e) {} renderDone(); }
+          else { sub.disabled = false; sub.textContent = "Submit responses"; showToast("We could not confirm your submission. Please check your connection and try again.", true); }
+        });
+      });
+      a1.appendChild(sub); p1.appendChild(a1);
+      v.appendChild(p1); topFocus(); return;
+    }
+
+    // finished + open collection configured + not yet sent from this device -> submit step
+    if (OPEN_SUBMIT && !deviceSubmitted()) {
+      var po = el("div", "page done");
+      po.appendChild(el("div", "check", "✓"));
+      po.appendChild(el("h2", null, "Ready to submit"));
+      po.appendChild(el("p", null, "You have completed every section. Submit to record your response. You can submit once from this device."));
+      var ao = el("div", "done-actions");
+      var subo = el("button", "btn btn-primary", "Submit responses"); subo.type = "button";
+      subo.addEventListener("click", function () {
+        subo.disabled = true; subo.textContent = "Submitting…";
+        submitOpen(function (ok) {
+          if (ok) { markDeviceSubmitted(); DEVICE_BLOCKED = true; renderDone(); }
+          else { subo.disabled = false; subo.textContent = "Submit responses"; showToast("We could not confirm your submission. Please check your connection and try again.", true); }
+        });
+      });
+      ao.appendChild(subo); po.appendChild(ao);
+      v.appendChild(po); topFocus(); return;
+    }
+
+    // recorded (gated/open) or finished local-only
+    var recorded = GATED || (OPEN_SUBMIT && deviceSubmitted());
+    var page2 = el("div", "page done");
+    page2.appendChild(el("div", "check", "✓"));
+    page2.appendChild(el("h2", null, "Thank you!"));
+    page2.appendChild(el("p", null, recorded
+      ? "Your response has been recorded. Thank you for taking part in this METU study."
+      : "All steps are complete. Thank you for taking part in this METU study. You can download your responses below."));
+    if (!recorded) {
+      var actions = el("div", "done-actions");
+      var dj = el("button", "btn btn-primary", "Download JSON"); dj.type = "button"; dj.addEventListener("click", exportJson);
+      var dc = el("button", "btn btn-ghost", "Download CSV"); dc.type = "button"; dc.addEventListener("click", exportCsv);
+      actions.appendChild(dj); actions.appendChild(dc); page2.appendChild(actions);
+    }
+    v.appendChild(page2); topFocus();
+  }
+
+  // ---------- access gate + delivery (Google Apps Script) ----------
+  function getParam(name) { var m = new RegExp("[?&]" + name + "=([^&#]*)").exec(location.search || ""); return m ? decodeURIComponent(m[1]) : ""; }
+  function jsonp(url, cb) {
+    var name = "cb_" + (jsonp._n = (jsonp._n || 0) + 1); var s, done = false;
+    function cleanup() { try { delete window[name]; } catch (e) { window[name] = undefined; } if (s && s.parentNode) s.parentNode.removeChild(s); }
+    window[name] = function (data) { if (done) return; done = true; cleanup(); cb(null, data); };
+    s = document.createElement("script");
+    s.src = url + (url.indexOf("?") >= 0 ? "&" : "?") + "callback=" + name;
+    s.onerror = function () { if (done) return; done = true; cleanup(); cb(new Error("network")); };
+    document.head.appendChild(s);
+    setTimeout(function () { if (done) return; done = true; cleanup(); cb(new Error("timeout")); }, 12000);
+  }
+  function validateToken(t, cb) { jsonp(CFG.webAppUrl + "?action=validate&t=" + encodeURIComponent(t), function (err, data) { cb(err ? "error" : ((data && data.status) || "invalid")); }); }
+  function submitResponses(cb) {
+    var payload = { background: background(), sections: buildExportSections() };
+    function confirm() { setTimeout(function () { validateToken(TOKEN, function (status) { cb(status === "recorded"); }); }, 1400); }
+    try {
+      fetch(CFG.webAppUrl, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ t: TOKEN, payload: payload }) })
+        .then(confirm, confirm);
+    } catch (e) { confirm(); }
+  }
+  // open mode: POST answers tagged with this device's id, then confirm the row landed (JSONP).
+  function submitOpen(cb) {
+    var d = deviceId();
+    var payload = { background: background(), sections: buildExportSections() };
+    function confirm() { setTimeout(function () { checkOpen(d, cb); }, 1400); }
+    try {
+      fetch(SUBMIT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ d: d, payload: payload }) })
+        .then(confirm, confirm);
+    } catch (e) { confirm(); }
+  }
+  function checkOpen(d, cb) { jsonp(SUBMIT_URL + "?action=check&d=" + encodeURIComponent(d), function (err, data) { cb(!err && !!data && data.recorded === true); }); }
+  function showDeviceBlocked() {
+    renderStepper(null);
+    var v = clearView();
+    var box = el("div", "page gate");
+    box.appendChild(el("div", "gate-icon ok", "✓"));
+    box.appendChild(el("h2", null, "You have already responded"));
+    box.appendChild(el("p", null, "This device has already submitted a response. Thank you for taking part in this METU study."));
+    v.appendChild(box); topFocus();
+  }
+  function showGate(kind) {
+    renderStepper(null);
+    var v = clearView();
+    var box = el("div", "page gate");
+    var cls = kind === "recorded" ? " ok" : (kind === "checking" ? " wait" : "");
+    box.appendChild(el("div", "gate-icon" + cls, kind === "recorded" ? "✓" : (kind === "checking" ? "…" : "!")));
+    var title, msg;
+    if (kind === "checking") { title = "Checking your link…"; msg = "One moment, please."; }
+    else if (kind === "recorded") { title = "You have already responded"; msg = "Our records show this link has already been used. Thank you for taking part."; }
+    else if (kind === "notoken") { title = "Please use your personal link"; msg = "Open the survey from the personal link we emailed you after the Google Form. The survey can only be opened with that link."; }
+    else if (kind === "error") { title = "Connection problem"; msg = "We could not check your link. Please check your connection and try again."; }
+    else { title = "This link is not valid"; msg = "Your link is invalid or has expired. Please start again from the Google Form to receive a new link."; }
+    box.appendChild(el("h2", null, title));
+    box.appendChild(el("p", null, msg));
+    if (kind === "error") { var b = el("button", "btn btn-primary", "Try again"); b.type = "button"; b.addEventListener("click", gateCheck); box.appendChild(b); }
+    v.appendChild(box); topFocus();
+  }
+  function gateCheck() {
+    var t = getParam("t");
+    if (!t) { showGate("notoken"); return; }
+    TOKEN = t;
+    try { if (localStorage.getItem(submittedKey(t))) { showGate("recorded"); return; } } catch (e) {}
+    showGate("checking");
+    validateToken(t, function (status) {
+      if (status === "pending") { ACCESS_OK = true; render(); }
+      else if (status === "recorded") { showGate("recorded"); }
+      else if (status === "error") { showGate("error"); }
+      else { showGate("invalid"); }
+    });
+  }
+
+  // ---------- toast ----------
+  function showToast(msg, warn) {
+    var t = document.getElementById("toast"); t.textContent = msg; t.className = "toast" + (warn ? " warn" : "");
+    t.hidden = false; clearTimeout(showToast._t); showToast._t = setTimeout(function () { t.hidden = true; }, 3600);
+  }
+
+  // ---------- export ----------
+  function bgQuestions() { var arr = INTAKE.slice(); SECTIONS.forEach(function (s) { extrasOf(s).forEach(function (q) { arr.push(q); }); }); return arr; }
+  function background() { var o = {}; bgQuestions().forEach(function (q) { o[q.id] = { label: q.label, answer: answers[bgKey(q.id)] || "" }; }); return o; }
+  function usesAi(sec, col) { var u = usageOf(sec, col); return u === "yes" ? "Yes" : (u === "no" ? "No" : ""); }
+  function toolsString(sec, col) { return toolsOf(sec, col).map(function (t, i) { return (i + 1) + ") " + t; }).join("; "); }
+  function buildExportSections() {
+    return SECTIONS.map(function (sec) {
+      var responses = [];
+      (sec.columns || []).forEach(function (col) {
+        var u = usageOf(sec, col), used = u === "yes";
+        (sec.groups || []).forEach(function (g) {
+          (g.questions || []).forEach(function (q) {
+            var key = keyOf(sec.id, q.id, col.id), has = used && answers[key] != null;
+            responses.push({ construct: g.name, code: q.code || "", question: q.text || "", sub_area: col.label || "",
+              uses_ai: usesAi(sec, col), tools: toolsOf(sec, col),
+              value: has ? answers[key] : "", label: has ? scaleLabel(answers[key]) : "" });
+          });
+        });
+      });
+      var subAreas = (sec.columns || []).map(function (col) { return { sub_area: col.label || "", uses_ai: usesAi(sec, col), tools: toolsOf(sec, col) }; });
+      return { section: sec.name, subAreas: subAreas, responses: responses };
+    });
+  }
+  function download(name, text, type) {
+    var blob = new Blob([text], { type: type || "text/plain;charset=utf-8" });
+    var url = URL.createObjectURL(blob); var a = document.createElement("a");
+    a.href = url; a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(url); }, 0);
+  }
+  function exportJson() { download("ai_survey_responses.json", JSON.stringify({ title: (S.meta && S.meta.title) || "Survey", org: (S.meta && S.meta.org) || "", background: background(), scale: SCALE, sections: buildExportSections() }, null, 2), "application/json;charset=utf-8"); }
+  function exportCsv() {
+    var bgQ = bgQuestions();
+    var lines = [bgQ.map(function (q) { return q.label; }).concat(["Section", "Sub-area", "Uses AI", "Ranked Tools", "Construct", "Code", "Statement", "Value", "Label"]).map(csvCell).join(",")];
+    var bgVals = bgQ.map(function (q) { return answers[bgKey(q.id)] || ""; });
+    SECTIONS.forEach(function (sec) {
+      (sec.columns || []).forEach(function (col) {
+        var uses = usesAi(sec, col), ts = toolsString(sec, col), used = usageOf(sec, col) === "yes";
+        (sec.groups || []).forEach(function (g) {
+          (g.questions || []).forEach(function (q) {
+            var key = keyOf(sec.id, q.id, col.id);
+            var val = (used && answers[key] != null) ? answers[key] : "";
+            var lab = (used && answers[key] != null) ? scaleLabel(answers[key]) : "";
+            lines.push(bgVals.concat([sec.name, col.label || "", uses, ts, g.name, q.code || "", q.text || "", val, lab]).map(csvCell).join(","));
+          });
+        });
+      });
+    });
+    download("ai_survey_responses.csv", "﻿" + lines.join("\r\n"), "text/csv;charset=utf-8");
+  }
+  function csvCell(v) { v = v == null ? "" : String(v); if (/[",\r\n]/.test(v)) v = '"' + v.replace(/"/g, '""') + '"'; return v; }
+
+  // ---------- render / init ----------
+  function render() {
+    if (DEVICE_BLOCKED) { showDeviceBlocked(); return; } // open mode: already submitted from this device
+    if (GATED && !ACCESS_OK) return; // hold the survey until a valid link is confirmed
+    var route = parseHash();
+    // Sequential gating: block deep-linking / jumping past the first unfinished step.
+    if (route.view === "step" && !stepReachable(route.step)) {
+      if (HAS_INTAKE && !aboutComplete()) { go("#about"); return; }
+      var st = firstIncompleteStep(); go(st ? stepHash(st) : "#done"); return;
+    }
+    if (route.view === "done" && completedSteps() !== totalSteps()) {
+      if (HAS_INTAKE && !aboutComplete()) { go("#about"); return; }
+      var st2 = firstIncompleteStep(); go(st2 ? stepHash(st2) : "#welcome"); return;
+    }
+    if (route.view === "welcome") renderWelcome();
+    else if (route.view === "about") (HAS_INTAKE ? renderAbout() : renderWelcome());
+    else if (route.view === "done") renderDone();
+    else renderStep(route.step);
+    updateProgress();
+  }
+  function init() {
+    applyMeta();
+    if (!SECTIONS.length) { document.getElementById("view").innerHTML = '<p class="page">No survey data found.</p>'; return; }
+    window.addEventListener("hashchange", render);
+    window.addEventListener("resize", function () { if (cueUpdate) cueUpdate(); });
+    if (GATED) { gateCheck(); return; }
+    ACCESS_OK = true;
+    if (OPEN_SUBMIT && deviceSubmitted()) { DEVICE_BLOCKED = true; showDeviceBlocked(); return; }
+    render();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
+</script>
+<style>body.grabpan-active, body.grabpan-active * { cursor: grabbing !important; user-select: none !important; }</style>
+<script>
+/* Desktop drag-to-pan ("hand" tool): press and drag anywhere to scroll the page (and the wide
+   rating matrix when grabbed inside it). A press that does not move is a normal click, so radios
+   and buttons keep working; once the pointer moves past a small threshold the press becomes a pan
+   and its trailing click is swallowed. Touch devices keep native scrolling. */
+(function () {
+  if (!window.matchMedia || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var THRESH = 6; // px of movement that turns a press into a pan
+  var down = false, panning = false, moved = false, target = null;
+  var startX = 0, startY = 0, anchorX = 0, anchorY = 0;
+  var vTarget = null, hTarget = null, vStart = 0, hStart = 0;
+
+  function scrollable(el, axis) {
+    for (var n = el; n && n.nodeType === 1 && n !== document.body; n = n.parentElement) {
+      var s = getComputedStyle(n), o = axis === 'y' ? s.overflowY : s.overflowX;
+      var room = axis === 'y' ? n.scrollHeight - n.clientHeight : n.scrollWidth - n.clientWidth;
+      if ((o === 'auto' || o === 'scroll') && room > 2) return n;
+    }
+    return null;
+  }
+  function vGet(t) { return t === window ? (window.scrollY || document.documentElement.scrollTop) : t.scrollTop; }
+  function vSet(t, v) { if (t === window) window.scrollTo(0, v); else t.scrollTop = v; }
+  function begin(e) {
+    panning = true; moved = true;
+    vTarget = scrollable(target, 'y') || window; vStart = vGet(vTarget);
+    hTarget = scrollable(target, 'x'); hStart = hTarget ? hTarget.scrollLeft : 0;
+    anchorX = e.clientX; anchorY = e.clientY; // anchor where the drag is recognised: no jump
+    var sel = window.getSelection && window.getSelection(); if (sel && sel.removeAllRanges) sel.removeAllRanges();
+    document.documentElement.style.scrollBehavior = 'auto'; // pan must be instant, not the page's smooth scroll
+    document.body.classList.add('grabpan-active');
+  }
+  function end() {
+    if (panning) {
+      panning = false;
+      document.documentElement.style.scrollBehavior = '';
+      document.body.classList.remove('grabpan-active');
+      if (moved) { // swallow the click that would otherwise fire right after a drag
+        var supp = function (ev) { ev.stopPropagation(); ev.preventDefault(); document.removeEventListener('click', supp, true); };
+        document.addEventListener('click', supp, true);
+        setTimeout(function () { document.removeEventListener('click', supp, true); }, 0);
+      }
+    }
+    down = false;
+  }
+  document.addEventListener('mousedown', function (e) {
+    if (e.button !== 0) return;
+    down = true; moved = false; target = e.target;
+    startX = e.clientX; startY = e.clientY;
+  }, true);
+  document.addEventListener('mousemove', function (e) {
+    if (!down) return;
+    if (!panning) {
+      if (Math.abs(e.clientX - startX) <= THRESH && Math.abs(e.clientY - startY) <= THRESH) return;
+      begin(e);
+    }
+    vSet(vTarget, vStart - (e.clientY - anchorY));
+    if (hTarget) hTarget.scrollLeft = hStart - (e.clientX - anchorX);
+    e.preventDefault();
+  }, true);
+  document.addEventListener('mouseup', end, true);
+  window.addEventListener('blur', end);
+})();
+</script>
+</body>
+</html>
